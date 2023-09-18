@@ -1,0 +1,19 @@
+import 'package:get/get.dart';
+import 'package:green_cycle/modules/sign_up/sign_up_bindigns.dart';
+import 'package:green_cycle/modules/sign_up/sign_up_screen.dart';
+import 'package:green_cycle/modules/splash/splash_screen.dart';
+import 'package:green_cycle/utilities/navigation/app_routes.dart';
+
+class AppPages {
+  static final List<GetPage<dynamic>> routes = [
+    GetPage(
+      name: AppRoutes.splash,
+      page: () => const SplashScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.signUpScreen,
+      page: () => const SignupScreen(),
+      binding: SignUpBindings(),
+    )
+  ];
+}
