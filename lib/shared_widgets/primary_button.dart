@@ -32,7 +32,7 @@ class PrimaryButton extends StatelessWidget {
                 backgroundColor ?? AppColors.primary),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.sp),
+                    borderRadius: BorderRadius.circular(8.sp),
                     side:
                         BorderSide(color: borderColor ?? AppColors.primary)))),
         onPressed: onTap,

@@ -33,9 +33,9 @@ class SignupScreen extends StatelessWidget {
             SizedBox(height: 12.h),
             PrimaryTextField(hintText: 'الاسم'),
             SizedBox(height: 10.h),
-            PrimaryTextField(hintText: 'رقم التليفون'),
+            PrimaryTextField(hintText: 'رقم الهاتف'),
             SizedBox(height: 10.h),
-            PrimaryTextField(hintText: 'كلمة السر'),
+            PrimaryTextField(hintText: 'كلمة المرور'),
             SizedBox(height: 15.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +96,7 @@ class SignupScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 25.h),
-            PrimaryButton(onTap: () {}, text: 'تسجيل الدخول'),
+            PrimaryButton(onTap: () {}, text: 'إنشاء حساب'),
             SizedBox(height: 10.h),
             GestureDetector(
               onTap: () {
