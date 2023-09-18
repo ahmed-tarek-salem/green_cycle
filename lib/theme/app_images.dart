@@ -6,4 +6,5 @@ class AppImages {
 
   /// SVG **********************************************************************
   static const String logoSvg = "${AppPaths.imagesPath}logo.svg";
+  static const String gallery = "${AppPaths.imagesPath}gallery.svg";
 }

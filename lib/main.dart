@@ -57,6 +57,7 @@ class App extends StatelessWidget {
             darkTheme: AppThemes().lightThemeData('ar'),
             initialRoute: AppRoutes.splash,
             getPages: AppPages.routes,
+            locale: const Locale('ar'),
             // initialBinding: InitialBindings(),
             defaultTransition: Transition.fadeIn,
           );

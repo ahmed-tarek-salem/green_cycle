@@ -20,7 +20,8 @@ class AppThemes {
       inputDecorationTheme: InputDecorationTheme(
         errorMaxLines: 2,
         fillColor: AppColors.secondary,
-        hintStyle: Get.textTheme.bodySmall!.copyWith(color: AppColors.primary),
+        hintStyle: Get.textTheme.bodyMedium,
+        labelStyle: Get.textTheme.bodyMedium,
         focusedBorder: OutlineInputBorder(
             borderRadius:
                 BorderRadius.all(Radius.circular((AppConstants.borderRadius))),
@@ -51,58 +52,58 @@ class AppThemes {
           iconTheme: IconThemeData(color: AppColors.white)),
       textTheme: TextTheme(
         titleLarge: TextStyle(
-          color: AppColors.secondary,
+          color: AppColors.primary,
           fontSize: 18.sp,
           fontWeight: FontWeight.w800,
         ),
         titleMedium: TextStyle(
-          color: AppColors.secondary,
-          fontWeight: FontWeight.w600,
-          fontSize: 18.sp,
+          color: AppColors.primary,
+          fontWeight: FontWeight.w400,
+          fontSize: 12.sp,
         ),
         headlineLarge: TextStyle(
-          color: AppColors.secondary,
+          color: AppColors.primary,
           fontWeight: FontWeight.w800,
           fontSize: 16.sp,
         ),
         headlineMedium: TextStyle(
-          color: AppColors.secondary,
+          color: AppColors.primary,
           fontWeight: FontWeight.w600,
           fontSize: 16.sp,
         ),
         headlineSmall: TextStyle(
-          color: AppColors.secondary,
+          color: AppColors.primary,
           fontWeight: FontWeight.w400,
           fontSize: 16.sp,
         ),
         displayLarge: TextStyle(
-          color: AppColors.secondary,
+          color: AppColors.primary,
           fontWeight: FontWeight.w800,
           fontSize: 14.sp,
         ),
         displayMedium: TextStyle(
-          color: AppColors.secondary,
+          color: AppColors.primary,
           fontWeight: FontWeight.w600,
           fontSize: 14.sp,
         ),
         displaySmall: TextStyle(
-          color: AppColors.secondary,
+          color: AppColors.primary,
           fontWeight: FontWeight.w400,
           fontSize: 14.sp,
         ),
         bodyLarge: TextStyle(
-          color: AppColors.secondary,
-          fontWeight: FontWeight.w800,
+          color: AppColors.primary,
+          fontWeight: FontWeight.w700,
           fontSize: 12.sp,
         ),
         bodyMedium: TextStyle(
-          color: AppColors.secondary,
-          fontWeight: FontWeight.w600,
+          color: AppColors.primary,
+          fontWeight: FontWeight.w400,
           fontSize: 12.sp,
         ),
         bodySmall: TextStyle(
-          color: AppColors.secondary,
-          fontWeight: FontWeight.w400,
+          color: AppColors.primary,
+          fontWeight: FontWeight.w300,
           fontSize: 12.sp,
         ),
       ),

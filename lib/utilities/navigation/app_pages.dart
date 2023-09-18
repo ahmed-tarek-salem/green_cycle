@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:green_cycle/modules/login/login_bindings.dart';
+import 'package:green_cycle/modules/login/login_screen.dart';
 import 'package:green_cycle/modules/sign_up/sign_up_bindigns.dart';
 import 'package:green_cycle/modules/sign_up/sign_up_screen.dart';
 import 'package:green_cycle/modules/splash/splash_screen.dart';
@@ -14,6 +16,11 @@ class AppPages {
       name: AppRoutes.signUpScreen,
       page: () => const SignupScreen(),
       binding: SignUpBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.loginScreen,
+      page: () => const LoginScreen(),
+      binding: LoginBindings(),
     )
   ];
 }
