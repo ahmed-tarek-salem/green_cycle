@@ -17,7 +17,6 @@ class HomeLayoutController extends GetxController {
   ];
 
   set navBarIndex(int index) {
-    print(index);
     _navBarIndex.value = index;
     update();
   }

@@ -27,11 +27,13 @@ class LocationsTab extends StatelessWidget {
           SizedBox(height: 14.h),
           Row(
             children: [
-              const LocationTile(name: 'ساحة الكلية', index: 0),
+              const LocationTile(name: 'ساحة الكلية', index: 0, isActive: true),
               SizedBox(width: 10.w),
-              const LocationTile(name: 'المبني الجديد', index: 1),
+              const LocationTile(
+                  name: 'المبني الجديد', index: 1, isActive: false),
               SizedBox(width: 10.w),
-              const LocationTile(name: 'المبني القديم', index: 2),
+              const LocationTile(
+                  name: 'المبني القديم', index: 2, isActive: false),
             ],
           ),
           SizedBox(height: 20.h),
