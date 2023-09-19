@@ -91,7 +91,7 @@ class HomeTab extends StatelessWidget {
                                 )
                               ],
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Align(
                               alignment: Alignment.bottomLeft,
                               child: Text(
