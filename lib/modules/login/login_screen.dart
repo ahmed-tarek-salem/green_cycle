@@ -25,7 +25,11 @@ class LoginScreen extends GetView {
             SizedBox(height: 10.h),
             PrimaryTextField(hintText: 'كلمة المرور'),
             SizedBox(height: 50.h),
-            PrimaryButton(onTap: () {}, text: 'تسجيل الدخول'),
+            PrimaryButton(
+                onTap: () {
+                  Get.toNamed(AppRoutes.homeLayoutScreen);
+                },
+                text: 'تسجيل الدخول'),
             SizedBox(height: 14.h),
             GestureDetector(
                 onTap: () {
