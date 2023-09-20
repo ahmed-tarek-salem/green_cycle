@@ -27,7 +27,7 @@ class LoginScreen extends GetView {
             SizedBox(height: 50.h),
             PrimaryButton(
                 onTap: () {
-                  Get.toNamed(AppRoutes.homeLayoutScreen);
+                  Get.offAndToNamed(AppRoutes.homeLayoutScreen);
                 },
                 text: 'تسجيل الدخول'),
             SizedBox(height: 14.h),

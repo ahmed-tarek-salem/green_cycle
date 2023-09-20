@@ -13,7 +13,7 @@ class HomeTab extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppConstants.horizontalPadding),
       child: Column(
         children: [
-          SizedBox(height: 15.h),
+          SizedBox(height: AppConstants.topPadding),
           Container(
             padding: EdgeInsets.symmetric(
                 horizontal: AppConstants.horizontalPadding, vertical: 20.h),

@@ -16,11 +16,17 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
         init: controller,
         builder: (context) {
           return Scaffold(
+            drawer: Drawer(
+              child: Column(
+                children: [],
+              ),
+            ),
+            resizeToAvoidBottomInset: false,
             appBar: AppBar(
               backgroundColor: AppColors.primary,
               centerTitle: true,
               title: Text(
-                'Green Cycle',
+                'Go Green',
                 style: TextStyle(fontWeight: FontWeight.w400),
               ),
             ),
