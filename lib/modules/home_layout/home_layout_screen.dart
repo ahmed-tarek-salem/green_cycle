@@ -26,7 +26,7 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
               backgroundColor: AppColors.primary,
               centerTitle: true,
               title: Text(
-                'Go Green',
+                controller.titles[controller.getNavBarIndex],
                 style: TextStyle(fontWeight: FontWeight.w400),
               ),
             ),

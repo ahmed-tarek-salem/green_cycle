@@ -15,6 +15,12 @@ class HomeLayoutController extends GetxController {
     const EventsTab(),
     const ComplaintsTab(),
   ];
+  final List<String> titles = [
+    'الصفحة الرئيسية',
+    'مواقع  الصناديق',
+    'الفعاليات',
+    'الشكاوي والمقترحات'
+  ];
 
   set navBarIndex(int index) {
     _navBarIndex.value = index;

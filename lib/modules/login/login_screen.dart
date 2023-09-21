@@ -23,7 +23,10 @@ class LoginScreen extends GetView {
             SizedBox(height: 20.h),
             PrimaryTextField(hintText: 'رقم الهاتف'),
             SizedBox(height: 10.h),
-            PrimaryTextField(hintText: 'كلمة المرور'),
+            PrimaryTextField(
+              hintText: 'كلمة المرور',
+              isObscured: true,
+            ),
             SizedBox(height: 50.h),
             PrimaryButton(
                 onTap: () {

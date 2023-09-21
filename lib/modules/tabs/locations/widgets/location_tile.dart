@@ -9,27 +9,33 @@ class LocationTile extends StatelessWidget {
   final String name;
   final int index;
   final bool isActive;
+  final VoidCallback? onTap;
 
   const LocationTile({
     required this.name,
     required this.index,
     required this.isActive,
+    this.onTap,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        height: 70.h,
-        decoration: BoxDecoration(
-            color: isActive ? AppColors.primary : AppColors.secondary,
-            borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
-        child: Center(
-            child: Text(
-          name,
-          style: TextStyle(color: isActive ? Colors.white : AppColors.primary),
-        )),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: 70.h,
+          decoration: BoxDecoration(
+              color: isActive ? AppColors.primary : AppColors.secondary,
+              borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
+          child: Center(
+              child: Text(
+            name,
+            style:
+                TextStyle(color: isActive ? Colors.white : AppColors.primary),
+          )),
+        ),
       ),
     );
   }

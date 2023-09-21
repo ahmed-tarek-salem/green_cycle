@@ -52,7 +52,7 @@ class App extends StatelessWidget {
               return child;
             }),
             debugShowCheckedModeBanner: false,
-            title: 'Green Cycle',
+            title: 'Go Green',
             theme: AppThemes().lightThemeData('ar'),
             darkTheme: AppThemes().lightThemeData('ar'),
             initialRoute: AppRoutes.splash,

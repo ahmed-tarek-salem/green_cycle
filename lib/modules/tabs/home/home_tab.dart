@@ -30,7 +30,7 @@ class HomeTab extends StatelessWidget {
                           fontSize: 24.sp, fontWeight: FontWeight.w300)),
                 ),
                 SizedBox(width: 30.w),
-                Text('35',
+                Text('40',
                     style:
                         TextStyle(fontSize: 40.sp, fontWeight: FontWeight.w600))
               ],
