@@ -43,48 +43,60 @@ class AppDrawer extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(
-                vertical: AppConstants.topPadding, horizontal: 10.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Image.asset(AppImages.user),
-                    SizedBox(width: 10.w),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'اسم المستخدم',
-                            style: Get.textTheme.headlineMedium,
-                          ),
-                          SizedBox(height: 10.h),
-                          Text('الرقم التعريفي')
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(height: 30.h),
-                DrawerTile(
-                  onTap: () {
-                    Get.toNamed(AppRoutes.aboutUsScreen);
-                  },
-                  title: 'من نحن',
-                ),
-                DrawerTile(
-                  onTap: () {},
-                  title: 'الأسئلة الأكثر شيوعاً',
-                ),
-                DrawerTile(
-                  onTap: () {},
-                  title: 'استبدل نقاطك',
-                ),
-              ],
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(
+                  vertical: AppConstants.topPadding, horizontal: 10.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Image.asset(AppImages.user),
+                      SizedBox(width: 10.w),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'اسم المستخدم',
+                              style: Get.textTheme.headlineMedium,
+                            ),
+                            SizedBox(height: 10.h),
+                            Text('الرقم التعريفي')
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 30.h),
+                  DrawerTile(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.aboutUsScreen);
+                    },
+                    title: 'من نحن',
+                  ),
+                  DrawerTile(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.faqScreen);
+                    },
+                    title: 'الأسئلة الأكثر شيوعاً',
+                  ),
+                  DrawerTile(
+                    onTap: () {},
+                    title: 'استبدل نقاطك',
+                  ),
+                  const Spacer(),
+                  DrawerTile(
+                    onTap: () {
+                      Get.offAndToNamed(AppRoutes.loginScreen);
+                    },
+                    backgroundColor: Colors.transparent,
+                    title: 'تسجيل الخروج',
+                  ),
+                ],
+              ),
             ),
           )
         ],

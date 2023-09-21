@@ -7,7 +7,9 @@ import 'package:green_cycle/utilities/global/app_constants.dart';
 class DrawerTile extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
+  final Color? backgroundColor;
   const DrawerTile({
+    this.backgroundColor,
     required this.onTap,
     required this.title,
     super.key,
@@ -22,7 +24,7 @@ class DrawerTile extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(20.w, 0, 10.w, 10.h),
         padding: EdgeInsets.symmetric(horizontal: 12.sp, vertical: 20.sp),
         decoration: BoxDecoration(
-            color: AppColors.secondary,
+            color: backgroundColor ?? AppColors.secondary,
             borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
         child: Text(
           title,
