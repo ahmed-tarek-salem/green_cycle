@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/modules/home_layout/home_layout_controller.dart';
+import 'package:green_cycle/modules/home_layout/widgets/app_drawer.dart';
+import 'package:green_cycle/modules/home_layout/widgets/home_app_bar.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/theme/app_icons.dart';
 
@@ -16,20 +18,10 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
         init: controller,
         builder: (context) {
           return Scaffold(
-            drawer: Drawer(
-              child: Column(
-                children: [],
-              ),
-            ),
+            drawer: const AppDrawer(),
             resizeToAvoidBottomInset: false,
-            appBar: AppBar(
-              backgroundColor: AppColors.primary,
-              centerTitle: true,
-              title: Text(
-                controller.titles[controller.getNavBarIndex],
-                style: TextStyle(fontWeight: FontWeight.w400),
-              ),
-            ),
+            appBar:
+                returnHomeAppBar(controller.titles[controller.getNavBarIndex]),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.startFloat,
             floatingActionButton: FloatingActionButton(

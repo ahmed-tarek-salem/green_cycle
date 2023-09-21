@@ -6,6 +6,7 @@ class AppImages {
   static const String loginVector = "${AppPaths.imagesPath}login_vector.png";
   static const String saha = "${AppPaths.imagesPath}saha.png";
   static const String newThird = "${AppPaths.imagesPath}new_third.jpg";
+  static const String user = "${AppPaths.imagesPath}user.png";
 
   /// SVG **********************************************************************
   static const String logoSvg = "${AppPaths.imagesPath}logo.svg";

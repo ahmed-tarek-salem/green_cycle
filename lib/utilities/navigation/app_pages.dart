@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:green_cycle/modules/about_us/about_us_bindings.dart';
+import 'package:green_cycle/modules/about_us/about_us_screen.dart';
 import 'package:green_cycle/modules/home_layout/home_layout_bindings.dart';
 import 'package:green_cycle/modules/home_layout/home_layout_screen.dart';
 import 'package:green_cycle/modules/login/login_bindings.dart';
@@ -28,6 +30,11 @@ class AppPages {
       name: AppRoutes.homeLayoutScreen,
       page: () => const HomeLayoutScreen(),
       binding: HomeLayoutBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.aboutUsScreen,
+      page: () => const AboutUsScreen(),
+      binding: AboutUsBindings(),
     )
   ];
 }

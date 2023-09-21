@@ -53,8 +53,8 @@ class AppThemes {
       textTheme: TextTheme(
         titleLarge: TextStyle(
           color: AppColors.primary,
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w800,
+          fontSize: 24.sp,
+          fontWeight: FontWeight.w500,
         ),
         titleMedium: TextStyle(
           color: AppColors.primary,

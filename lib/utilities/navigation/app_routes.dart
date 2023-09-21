@@ -8,4 +8,5 @@ class AppRoutes {
   static const String updatePasswordScreen = "/update-password-screen";
   static const String successs = "/successs-screen";
   static const String homeLayoutScreen = "/home-layout-screen";
+  static const String aboutUsScreen = "/about-us-screen";
 }
