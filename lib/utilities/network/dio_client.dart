@@ -44,13 +44,10 @@ class DioClient {
       );
     }
   }
+}
 
-  /// Add Headers *******************************************
-  Map<String, String> getHeaders(String lang) {
-    return {
-      // 'Accept': 'application/json',
-      // 'Content-Type': 'application/json',
-      'Accept-Language': 'lang',
-    };
-  }
+class MyCustomException implements Exception {
+  final String message;
+
+  MyCustomException(this.message);
 }
