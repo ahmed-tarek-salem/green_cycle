@@ -1,15 +1,16 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:green_cycle/models/request_models/sign_up_request_model.dart';
+import 'package:green_cycle/models/response_models/user_response_model.dart';
 import 'package:green_cycle/modules/sign_up/sign_up_repo.dart';
-import 'package:green_cycle/utilities/mixins/loading_overlay_mixin.dart';
+import 'package:green_cycle/utilities/global/app_constants.dart';
+import 'package:green_cycle/utilities/mixins/overlay_mixin.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
+import 'package:green_cycle/utilities/network/dio_client.dart';
 import 'package:image_picker/image_picker.dart';
 
-class SignUpController extends GetxController with LoadingOverlayMixin {
+class SignUpController extends GetxController with OverlyaysMixin {
   final _repo = SignUpRepo();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
@@ -20,7 +21,15 @@ class SignUpController extends GetxController with LoadingOverlayMixin {
   Rx<XFile?> image = Rx(null);
 
   Future<void> signUp() async {
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
+    if (image.value == null) {
+      showErrorDialog('برجاء رفع كارنيه كلية صيدلة الخاص بك');
+      return;
+    }
     try {
+      showLoadingOverlay();
       final signUpRequestModel = SignUpRequestModel(
         name: nameController.text,
         phone: phoneController.text,
@@ -29,11 +38,17 @@ class SignUpController extends GetxController with LoadingOverlayMixin {
         passwordConfirm:
             passwordController.text, // You can change this if needed.
       );
-      showLoadingOverlay();
-      await _repo.signUp(signUpRequestModel);
-      Get.offAndToNamed(AppRoutes.homeLayoutScreen);
+      final UserResponseModel userResponseModel =
+          await _repo.signUp(signUpRequestModel);
+      if (userResponseModel.data.isVerified != true) {
+        Get.toNamed(AppRoutes.successs);
+      } else {
+        Get.offAndToNamed(AppRoutes.homeLayoutScreen);
+      }
     } catch (e) {
-      errorMessage.value = e.toString();
+      final exceptionMessage =
+          (e is MyCustomException) ? e.message : AppConstants.error;
+      showErrorDialog(exceptionMessage);
     } finally {
       hideLoadingOverlay();
     }

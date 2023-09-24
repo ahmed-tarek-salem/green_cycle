@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -41,16 +42,20 @@ class App extends StatelessWidget {
         builder: (context, child) {
           return GetMaterialApp(
             localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
               FormBuilderLocalizations.delegate,
             ],
             builder: ((context, child) {
               child = FlutterSmartDialog.init()(context, child);
-              // child = MediaQuery(
-              //   data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-              //   child: child,
-              // );
+              child = MediaQuery(
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                child: child,
+              );
               return child;
             }),
+
+            supportedLocales: const [Locale('ar')],
             debugShowCheckedModeBanner: false,
             title: 'Go Green',
             theme: AppThemes().lightThemeData('ar'),
