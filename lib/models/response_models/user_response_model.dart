@@ -20,6 +20,7 @@ class UserResponseModel {
 class UserData {
   final String? name;
   final String? id;
+  final int? serialId;
   final int? phone;
   final String? avatar;
   final String? gender;
@@ -30,6 +31,7 @@ class UserData {
   UserData({
     required this.name,
     required this.id,
+    required this.serialId,
     required this.phone,
     required this.avatar,
     required this.gender,
@@ -41,7 +43,8 @@ class UserData {
   factory UserData.fromMap(Map<String, dynamic> map) {
     return UserData(
       name: map['user']['name'],
-      id: map['user']['id'],
+      id: map['user']['_id'],
+      serialId: map['user']['serialId'],
       phone: map['user']['phone'],
       avatar: map['user']['avatar'],
       gender: map['user']['gender'],

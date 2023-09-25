@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:green_cycle/main.dart';
 import 'package:green_cycle/modules/tabs/complaints/complaints_tab.dart';
 import 'package:green_cycle/modules/tabs/events/events_tab.dart';
 import 'package:green_cycle/modules/tabs/home/home_tab.dart';
 import 'package:green_cycle/modules/tabs/locations/locations_tab.dart';
+import 'package:green_cycle/utilities/navigation/app_routes.dart';
+import 'package:green_cycle/utilities/network/dio_client.dart';
 
 class HomeLayoutController extends GetxController {
   final RxInt _navBarIndex = 0.obs;
@@ -25,5 +28,12 @@ class HomeLayoutController extends GetxController {
   set navBarIndex(int index) {
     _navBarIndex.value = index;
     update();
+  }
+
+  logout() {
+    navBarIndex = 0;
+    DioClient.logout();
+    localStorage.clearToken();
+    Get.offAndToNamed(AppRoutes.loginScreen);
   }
 }

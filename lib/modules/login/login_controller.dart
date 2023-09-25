@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:green_cycle/main.dart';
 import 'package:green_cycle/models/request_models/login_request_model.dart';
 import 'package:green_cycle/models/response_models/user_response_model.dart';
 import 'package:green_cycle/modules/login/login_repo.dart';
@@ -25,9 +26,11 @@ class LoginController extends GetxController with OverlyaysMixin {
           phone: phoneController.text, password: passwordController.text);
       final UserResponseModel userResponseModel =
           await _repo.login(loginRequestModel);
+      print(userResponseModel.data.id);
       if (userResponseModel.data.isVerified != true) {
         Get.toNamed(AppRoutes.successs);
       } else {
+        localStorage.setToken(userResponseModel.token);
         Get.offAndToNamed(AppRoutes.homeLayoutScreen);
       }
     } catch (e) {

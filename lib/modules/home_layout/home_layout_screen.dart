@@ -18,7 +18,7 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
         init: controller,
         builder: (context) {
           return Scaffold(
-            drawer: const AppDrawer(),
+            drawer: AppDrawer(onLogout: controller.logout),
             resizeToAvoidBottomInset: false,
             appBar:
                 returnHomeAppBar(controller.titles[controller.getNavBarIndex]),

@@ -1,7 +1,8 @@
 import 'package:get_storage/get_storage.dart';
+import 'package:green_cycle/models/response_models/user_response_model.dart';
 
 ///Storage Keys
-enum LocalStorageKeys { keyAppLocal, keyToken }
+enum LocalStorageKeys { keyAppLocal, keyToken, user }
 
 class LocalStorage {
   //Data

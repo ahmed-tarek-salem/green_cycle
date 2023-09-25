@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:green_cycle/models/request_models/sign_up_request_model.dart';
 import 'package:green_cycle/models/response_models/user_response_model.dart';
 import 'package:green_cycle/modules/sign_up/sign_up_repo.dart';
@@ -17,11 +16,11 @@ class SignUpController extends GetxController with OverlyaysMixin {
   final TextEditingController passwordController = TextEditingController();
   final gender = Gender.male.obs;
   final errorMessage = RxString('');
-  final formKey = GlobalKey<FormState>();
+  final signUpFormKey = GlobalKey<FormState>();
   Rx<XFile?> image = Rx(null);
 
   Future<void> signUp() async {
-    if (!formKey.currentState!.validate()) {
+    if (!signUpFormKey.currentState!.validate()) {
       return;
     }
     if (image.value == null) {
@@ -35,11 +34,12 @@ class SignUpController extends GetxController with OverlyaysMixin {
         phone: phoneController.text,
         gender: gender.value == Gender.male ? 'male' : 'female',
         password: passwordController.text,
-        passwordConfirm:
-            passwordController.text, // You can change this if needed.
+        passwordConfirm: passwordController.text,
       );
       final UserResponseModel userResponseModel =
           await _repo.signUp(signUpRequestModel);
+      // DioClient.login(userResponseModel.token);
+      // await _repo.verifyOtp();
       if (userResponseModel.data.isVerified != true) {
         Get.toNamed(AppRoutes.successs);
       } else {
@@ -52,6 +52,10 @@ class SignUpController extends GetxController with OverlyaysMixin {
     } finally {
       hideLoadingOverlay();
     }
+  }
+
+  loginDio(String token) {
+    DioClient.login(token);
   }
 
   setGender(Gender gender) {

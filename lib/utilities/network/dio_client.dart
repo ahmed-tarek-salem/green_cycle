@@ -13,7 +13,7 @@ class DioClient {
   static final publicDio = Dio(_options);
 
   static void login(String token) {
-    privateDio.options.headers['Authorization'] = 'Bearer $token';
+    privateDio.options.headers['Authorization'] = token;
   }
 
   static void logout() {

@@ -22,7 +22,7 @@ class SignupScreen extends GetView<SignUpController> {
         padding:
             EdgeInsets.symmetric(horizontal: AppConstants.horizontalPadding),
         child: Form(
-          key: controller.formKey,
+          key: controller.signUpFormKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

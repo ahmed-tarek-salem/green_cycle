@@ -8,7 +8,9 @@ import 'package:green_cycle/utilities/global/app_constants.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
 
 class AppDrawer extends StatelessWidget {
+  final VoidCallback onLogout;
   const AppDrawer({
+    required this.onLogout,
     super.key,
   });
 
@@ -89,9 +91,7 @@ class AppDrawer extends StatelessWidget {
                   ),
                   const Spacer(),
                   DrawerTile(
-                    onTap: () {
-                      Get.offAndToNamed(AppRoutes.loginScreen);
-                    },
+                    onTap: onLogout,
                     backgroundColor: Colors.transparent,
                     title: 'تسجيل الخروج',
                   ),
