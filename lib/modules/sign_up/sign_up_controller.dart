@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:green_cycle/main.dart';
 import 'package:green_cycle/models/request_models/sign_up_request_model.dart';
 import 'package:green_cycle/models/response_models/user_response_model.dart';
 import 'package:green_cycle/modules/sign_up/sign_up_repo.dart';
@@ -19,6 +20,14 @@ class SignUpController extends GetxController with OverlyaysMixin {
   final errorMessage = RxString('');
   GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
   Rx<XFile?> image = Rx(null);
+
+  @override
+  void onInit() {
+    Future.delayed(Duration(milliseconds: 400), () {
+      checkIfSigned();
+    });
+    super.onInit();
+  }
 
   Future<void> signUp() async {
     if (!signUpFormKey.currentState!.validate()) {
@@ -71,6 +80,12 @@ class SignUpController extends GetxController with OverlyaysMixin {
     if (image != null) {
       this.image.value = image;
       update();
+    }
+  }
+
+  checkIfSigned() {
+    if (localStorage.getToken() != null) {
+      Get.offNamed(AppRoutes.homeLayoutScreen);
     }
   }
 

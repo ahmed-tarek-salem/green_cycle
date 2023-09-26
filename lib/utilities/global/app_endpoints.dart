@@ -3,4 +3,5 @@ class AppEndpoints {
   static const login = '${baseUrl}auth/log-in';
   static const signup = '${baseUrl}auth/sign-up';
   static const veifyOtp = '${baseUrl}auth/verify-otp';
+  static const locations = '${baseUrl}map';
 }
