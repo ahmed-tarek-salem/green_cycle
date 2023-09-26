@@ -87,7 +87,7 @@ class AppDrawer extends StatelessWidget {
                   ),
                   DrawerTile(
                     onTap: () {},
-                    title: 'استبدل نقاطك',
+                    title: 'استبدل نقاطك الخضراء',
                   ),
                   const Spacer(),
                   DrawerTile(

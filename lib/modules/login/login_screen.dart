@@ -43,7 +43,7 @@ class LoginScreen extends GetView<LoginController> {
               SizedBox(height: 14.h),
               GestureDetector(
                   onTap: () {
-                    Get.toNamed(AppRoutes.signUpScreen);
+                    Get.offAndToNamed(AppRoutes.signUpScreen);
                   },
                   child: const Text('ليس لديك حساب؟ إنشاء حساب')),
             ],

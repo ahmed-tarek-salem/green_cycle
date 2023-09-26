@@ -7,7 +7,9 @@ import 'package:green_cycle/utilities/global/app_constants.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
 
 class SuccessProcessScreen extends StatelessWidget {
-  const SuccessProcessScreen({super.key});
+  SuccessProcessScreen({super.key});
+
+  final onTap = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +31,7 @@ class SuccessProcessScreen extends StatelessWidget {
             SizedBox(height: 20.sp),
             Image.asset(AppImages.success),
             SizedBox(height: 50.sp),
-            PrimaryButton(
-                onTap: () {
-                  Get.offAllNamed(AppRoutes.loginScreen);
-                },
-                text: 'العودة')
+            PrimaryButton(onTap: onTap, text: 'العودة')
           ],
         ),
       ),

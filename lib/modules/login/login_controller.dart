@@ -13,7 +13,7 @@ class LoginController extends GetxController with OverlyaysMixin {
   final _repo = LoginRepo();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   login() async {
     if (!formKey.currentState!.validate()) {
@@ -28,7 +28,9 @@ class LoginController extends GetxController with OverlyaysMixin {
           await _repo.login(loginRequestModel);
       print(userResponseModel.data.id);
       if (userResponseModel.data.isVerified != true) {
-        Get.toNamed(AppRoutes.successs);
+        Get.toNamed(AppRoutes.successs, arguments: () {
+          Get.back();
+        });
       } else {
         localStorage.setToken(userResponseModel.token);
         Get.offAndToNamed(AppRoutes.homeLayoutScreen);
@@ -40,5 +42,13 @@ class LoginController extends GetxController with OverlyaysMixin {
     } finally {
       hideLoadingOverlay();
     }
+  }
+
+  @override
+  void onClose() {
+    phoneController.dispose();
+    passwordController.dispose();
+
+    super.onClose();
   }
 }

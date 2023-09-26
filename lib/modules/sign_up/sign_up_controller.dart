@@ -8,6 +8,7 @@ import 'package:green_cycle/utilities/mixins/overlay_mixin.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
 import 'package:green_cycle/utilities/network/dio_client.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:dio/dio.dart' as dio;
 
 class SignUpController extends GetxController with OverlyaysMixin {
   final _repo = SignUpRepo();
@@ -16,7 +17,7 @@ class SignUpController extends GetxController with OverlyaysMixin {
   final TextEditingController passwordController = TextEditingController();
   final gender = Gender.male.obs;
   final errorMessage = RxString('');
-  final signUpFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
   Rx<XFile?> image = Rx(null);
 
   Future<void> signUp() async {
@@ -30,18 +31,20 @@ class SignUpController extends GetxController with OverlyaysMixin {
     try {
       showLoadingOverlay();
       final signUpRequestModel = SignUpRequestModel(
-        name: nameController.text,
-        phone: phoneController.text,
-        gender: gender.value == Gender.male ? 'male' : 'female',
-        password: passwordController.text,
-        passwordConfirm: passwordController.text,
-      );
+          name: nameController.text,
+          phone: phoneController.text,
+          gender: gender.value == Gender.male ? 'male' : 'female',
+          password: passwordController.text,
+          passwordConfirm: passwordController.text,
+          image: dio.MultipartFile.fromFileSync(image.value!.path));
       final UserResponseModel userResponseModel =
           await _repo.signUp(signUpRequestModel);
       // DioClient.login(userResponseModel.token);
       // await _repo.verifyOtp();
       if (userResponseModel.data.isVerified != true) {
-        Get.toNamed(AppRoutes.successs);
+        Get.toNamed(AppRoutes.successs, arguments: () {
+          Get.offAllNamed(AppRoutes.loginScreen);
+        });
       } else {
         Get.offAndToNamed(AppRoutes.homeLayoutScreen);
       }
