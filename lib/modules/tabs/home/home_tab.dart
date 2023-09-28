@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:green_cycle/modules/tabs/home/widgets/activity_tile.dart';
 import 'package:green_cycle/modules/tabs/home/widgets/green_points_section.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
@@ -49,39 +50,7 @@ class HomeTab extends StatelessWidget {
                     separatorBuilder: (context, index) =>
                         SizedBox(height: 10.h),
                     itemBuilder: (context, index) {
-                      return Container(
-                        width: double.infinity,
-                        height: 75.h,
-                        padding: EdgeInsets.all(10.sp),
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(AppConstants.borderRadius),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('استخدمت صندوق إعادة التدوير'),
-                                Text(
-                                  '2023/9/20',
-                                  style: TextStyle(fontSize: 10.sp),
-                                )
-                              ],
-                            ),
-                            const Spacer(),
-                            Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Text(
-                                'حصلت على 20 نقطة',
-                                style: TextStyle(fontSize: 10.sp),
-                              ),
-                            )
-                          ],
-                        ),
-                      );
+                      return ActivityTile();
                     },
                     itemCount: 2,
                   ),

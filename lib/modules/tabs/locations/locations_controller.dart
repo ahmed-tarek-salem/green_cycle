@@ -14,7 +14,7 @@ class LocationsController extends BaseController {
 
   @override
   void onInit() {
-    getLocations();
+    if (locationsResponseModel.value == null) getLocations();
     super.onInit();
   }
 
@@ -22,11 +22,15 @@ class LocationsController extends BaseController {
     try {
       setLoading = true;
       locationsResponseModel.value = await _repo.getLocations();
+      setError = false;
       update();
     } catch (e) {
+      setError = true;
       final exceptionMessage =
           (e is MyCustomException) ? e.message : AppConstants.error;
       showErrorDialog(exceptionMessage);
+    } finally {
+      setLoading = false;
     }
   }
 
