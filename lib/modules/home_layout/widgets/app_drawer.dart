@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:green_cycle/modules/home_layout/home_layout_controller.dart';
 import 'package:green_cycle/modules/home_layout/widgets/drawer_tile.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/theme/app_images.dart';
@@ -8,9 +9,9 @@ import 'package:green_cycle/utilities/global/app_constants.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
 
 class AppDrawer extends StatelessWidget {
-  final VoidCallback onLogout;
+  final HomeLayoutController controller;
   const AppDrawer({
-    required this.onLogout,
+    required this.controller,
     super.key,
   });
 
@@ -91,7 +92,7 @@ class AppDrawer extends StatelessWidget {
                   ),
                   const Spacer(),
                   DrawerTile(
-                    onTap: onLogout,
+                    onTap: controller.logout,
                     backgroundColor: Colors.transparent,
                     title: 'تسجيل الخروج',
                   ),

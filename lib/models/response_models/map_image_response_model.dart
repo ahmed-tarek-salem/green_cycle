@@ -1,8 +1,8 @@
 class MapImageResponseModel {
-  final String id;
-  final String imageUrl;
-  final String building;
-  final int floor;
+  final String? id;
+  final String? imageUrl;
+  final String? building;
+  final int? floor;
   MapImageResponseModel({
     required this.id,
     required this.imageUrl,
@@ -12,7 +12,7 @@ class MapImageResponseModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      '_id': id,
       'imageUrl': imageUrl,
       'building': building,
       'floor': floor,
@@ -21,7 +21,7 @@ class MapImageResponseModel {
 
   factory MapImageResponseModel.fromMap(Map<String, dynamic> map) {
     return MapImageResponseModel(
-      id: map['id'],
+      id: map['_id'],
       imageUrl: map['imageUrl'],
       building: map['building'],
       floor: map['floor'],

@@ -47,6 +47,6 @@ class AppPages {
     GetPage(
       name: AppRoutes.successs,
       page: () => SuccessProcessScreen(),
-    )
+    ),
   ];
 }

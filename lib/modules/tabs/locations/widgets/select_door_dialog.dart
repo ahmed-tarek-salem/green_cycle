@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/modules/tabs/locations/locations_controller.dart';
 import 'package:green_cycle/modules/tabs/locations/locations_tab.dart';
+import 'package:green_cycle/modules/tabs/locations/widgets/door_tab.dart';
 import 'package:green_cycle/shared_widgets/primary_button.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 
@@ -14,16 +15,29 @@ class selectDoorDialog extends StatelessWidget {
 
   final LocationsController controller;
 
-  static const List<String> doors = [
+  static const List<String> oldBuildingDoors = [
+    "الطابق الأرضي",
     "الطابق الأول",
     "الطابق  الثاني",
     "الطابق الثالث",
+    "الطابق الرابع",
+    "الطابق الخامس",
+    "الطابق السادس",
+  ];
+  static const List<String> newBuildingDoors = [
+    "الطابق  الثاني",
+    "الطابق الثالث",
+    "الطابق الرابع",
+    "الطابق الخامس",
+    "الطابق السادس",
+    "الطابق السابع",
+    "الطابق الثامن",
   ];
   fun() {
     List.generate(
-        doors.length,
+        oldBuildingDoors.length,
         (index) => DoorTab(
-            doorName: doors[index],
+            doorName: oldBuildingDoors[index],
             index: index,
             onTap: () {
               controller.selectedDoorIndex = index;
@@ -64,10 +78,16 @@ class selectDoorDialog extends StatelessWidget {
                 ),
                 SizedBox(height: 28.sp),
                 Wrap(
+                  runSpacing: 10.h,
+                  spacing: 20.w,
                   children: List.generate(
-                      doors.length,
+                      controller.selectedLocationIndex == 1
+                          ? newBuildingDoors.length
+                          : oldBuildingDoors.length,
                       (index) => DoorTab(
-                          doorName: doors[index],
+                          doorName: controller.selectedLocationIndex == 1
+                              ? newBuildingDoors[index]
+                              : oldBuildingDoors[index],
                           index: index,
                           onTap: () {
                             controller.selectedDoorIndex = index;

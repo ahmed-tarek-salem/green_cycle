@@ -9,12 +9,12 @@ class LocationsResponseModel {
 
   factory LocationsResponseModel.fromMap(Map<String, dynamic> map) {
     return LocationsResponseModel(
-      oldBuildingMaps: map['map']['oldBuilding']
-          .map((mapImage) => MapImageResponseModel.fromMap(mapImage))
-          .toList(),
-      newBuildingMaps: map['map']['newBuilding']
-          .map((mapImage) => MapImageResponseModel.fromMap(mapImage))
-          .toList(),
+      oldBuildingMaps: List<MapImageResponseModel>.from(map['map']
+              ['oldBuilding']
+          .map((mapImage) => MapImageResponseModel.fromMap(mapImage))),
+      newBuildingMaps: List<MapImageResponseModel>.from(map['map']
+              ['newBuilding']
+          .map((mapImage) => MapImageResponseModel.fromMap(mapImage))),
     );
   }
 }

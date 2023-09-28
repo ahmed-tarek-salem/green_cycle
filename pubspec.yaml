@@ -47,18 +47,18 @@ flutter:
     - family: Montserrat-Arabic
       fonts:
         - asset: assets/fonts/Montserrat-Arabic900.otf
-        - weight: 900
+          weight: 900
         - asset: assets/fonts/Montserrat-Arabic800.otf
-        - weight: 800
+          weight: 800
         - asset: assets/fonts/Montserrat-Arabic700.otf
-        - weight: 700
+          weight: 700
         - asset: assets/fonts/Montserrat-Arabic600.otf
-        - weight: 600
+          weight: 600
         - asset: assets/fonts/Montserrat-Arabic500.otf
-        - weight: 500
+          weight: 500
         - asset: assets/fonts/Montserrat-Arabic400.otf
-        - weight: 400
+          weight: 400
         - asset: assets/fonts/Montserrat-Arabic300.otf
-        - weight: 300
+          weight: 300
         - asset: assets/fonts/Montserrat-Arabic250.otf
-        - weight: 200
+          weight: 200

@@ -1,34 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:green_cycle/modules/faq/faq_controller.dart';
 import 'package:green_cycle/modules/home_layout/widgets/home_app_bar.dart';
+import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
 
-class FaqScreen extends StatelessWidget {
+class FaqScreen extends GetView<FaqController> {
   const FaqScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: returnHomeAppBar('الأسئلة الشائعة'),
-      body: ListView.builder(
-        padding: EdgeInsets.symmetric(
-            horizontal: AppConstants.horizontalPadding,
-            vertical: AppConstants.topPadding),
-        itemBuilder: (context, index) {
-          return ExpansionTile(
-            title: Text('سؤال  مهم جداً', style: Get.textTheme.headlineSmall),
-            shape: Border(),
-            iconColor: AppColors.primary,
-            collapsedIconColor: AppColors.primary,
-            children: [
-              Text(
-                  'هل تعلم أن بإمكانك لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور  دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو ')
-            ],
-          );
-        },
-        itemCount: 30,
-      ),
+      body: GetBuilder(
+          init: controller,
+          builder: (_) {
+            if (controller.isLoading) {
+              return const CustomProgressIndicator();
+            }
+            return ListView.builder(
+              padding: EdgeInsets.symmetric(
+                  horizontal: AppConstants.horizontalPadding,
+                  vertical: AppConstants.topPadding),
+              itemBuilder: (context, index) {
+                final question = controller.questions[index];
+                return ExpansionTile(
+                  title: Text(question.question,
+                      style: Get.textTheme.headlineSmall),
+                  shape: Border(),
+                  iconColor: AppColors.primary,
+                  collapsedIconColor: AppColors.primary,
+                  children: [
+                    Text(
+                      question.answer,
+                      textAlign: TextAlign.right,
+                    )
+                  ],
+                );
+              },
+              itemCount: controller.questions.length,
+            );
+          }),
     );
   }
 }
