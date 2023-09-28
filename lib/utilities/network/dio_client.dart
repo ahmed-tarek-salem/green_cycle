@@ -13,11 +13,11 @@ class DioClient {
   static final publicDio = Dio(_options);
 
   static void login(String token) {
-    privateDio.options.headers['Authorization'] = token;
+    privateDio.options.headers['Cookie'] = 'JWT=${token}';
   }
 
   static void logout() {
-    privateDio.options.headers.remove('Authorization');
+    privateDio.options.headers.remove('Cookie');
   }
 
   static void initialize(String lang) {

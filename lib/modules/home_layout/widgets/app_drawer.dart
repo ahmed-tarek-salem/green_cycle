@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/modules/home_layout/home_layout_controller.dart';
 import 'package:green_cycle/modules/home_layout/widgets/drawer_tile.dart';
+import 'package:green_cycle/shared_widgets/custom_error_widget.dart';
+import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/theme/app_images.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
@@ -54,25 +56,36 @@ class AppDrawer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Image.asset(AppImages.user),
-                      SizedBox(width: 10.w),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  GetBuilder(
+                      init: controller,
+                      builder: (_) {
+                        if (controller.isLoading) {
+                          return CustomProgressIndicator();
+                        } else if (controller.isError) {
+                          return CustomErrorWidget(
+                              onRefresh: controller.getUser);
+                        }
+                        return Row(
                           children: [
-                            Text(
-                              'اسم المستخدم',
-                              style: Get.textTheme.headlineMedium,
-                            ),
-                            SizedBox(height: 10.h),
-                            Text('الرقم التعريفي')
+                            Image.asset(AppImages.user),
+                            SizedBox(width: 10.w),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    controller.user.name ?? '-',
+                                    style: Get.textTheme.headlineMedium,
+                                  ),
+                                  SizedBox(height: 10.h),
+                                  Text(
+                                      'الرقم التعريفي : ${controller.user.serialId}')
+                                ],
+                              ),
+                            )
                           ],
-                        ),
-                      )
-                    ],
-                  ),
+                        );
+                      }),
                   SizedBox(height: 30.h),
                   DrawerTile(
                     onTap: () {

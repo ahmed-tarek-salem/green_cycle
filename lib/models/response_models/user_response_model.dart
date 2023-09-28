@@ -1,6 +1,6 @@
 class UserResponseModel {
   final String status;
-  final String token;
+  final String? token;
   final UserData data;
   UserResponseModel({
     required this.status,

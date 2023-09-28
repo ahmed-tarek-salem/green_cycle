@@ -32,7 +32,7 @@ class LoginController extends BaseController {
           Get.back();
         });
       } else {
-        localStorage.setToken(userResponseModel.token);
+        localStorage.setToken(userResponseModel.token!);
         Get.offAndToNamed(AppRoutes.homeLayoutScreen);
       }
     } catch (e) {

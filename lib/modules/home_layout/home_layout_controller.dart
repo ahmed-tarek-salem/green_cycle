@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/main.dart';
+import 'package:green_cycle/models/response_models/user_response_model.dart';
 import 'package:green_cycle/modules/home_layout/home_lauout_repo.dart';
 import 'package:green_cycle/modules/tabs/complaints/complaints_tab.dart';
 import 'package:green_cycle/modules/tabs/events/events_tab.dart';
@@ -14,10 +15,11 @@ import 'package:green_cycle/utilities/network/dio_client.dart';
 class HomeLayoutController extends BaseController {
   final RxInt _navBarIndex = 0.obs;
   final _repo = HomeLayoutRepo();
+  late final UserData user;
 
   @override
   void onInit() {
-    _repo.getUser();
+    getUser();
     super.onInit();
   }
 
@@ -47,10 +49,11 @@ class HomeLayoutController extends BaseController {
     Get.offAndToNamed(AppRoutes.loginScreen);
   }
 
-  Future<void> getFaqs() async {
+  Future<void> getUser() async {
     try {
       setLoading = true;
-      final data = await _repo.getUser();
+      final userResponseModel = await _repo.getUser();
+      user = userResponseModel.data;
       setError = false;
       update();
     } catch (e) {

@@ -66,8 +66,9 @@ class SignUpController extends BaseController {
     }
   }
 
-  loginDio(String token) {
+  keepLogged(String token) {
     DioClient.login(token);
+    localStorage.setToken(token);
   }
 
   setGender(Gender gender) {
@@ -83,8 +84,9 @@ class SignUpController extends BaseController {
     }
   }
 
-  checkIfSigned() {
+  checkIfSigned() async {
     if (localStorage.getToken() != null) {
+      await keepLogged(localStorage.getToken()!);
       Get.offNamed(AppRoutes.homeLayoutScreen);
     }
   }

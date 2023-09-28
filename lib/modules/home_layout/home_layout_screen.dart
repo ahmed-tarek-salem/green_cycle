@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:green_cycle/modules/home_layout/home_layout_controller.dart';
 import 'package:green_cycle/modules/home_layout/widgets/app_drawer.dart';
 import 'package:green_cycle/modules/home_layout/widgets/home_app_bar.dart';
+import 'package:green_cycle/shared_widgets/custom_error_widget.dart';
+import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/theme/app_icons.dart';
 
@@ -32,7 +34,16 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
                 size: 30.sp,
               ),
             ),
-            body: controller.tabs[controller.getNavBarIndex],
+            body: GetBuilder(
+                init: controller,
+                builder: (_) {
+                  if (controller.isLoading) {
+                    return const CustomProgressIndicator();
+                  } else if (controller.isError) {
+                    return CustomErrorWidget(onRefresh: controller.getUser);
+                  }
+                  return controller.tabs[controller.getNavBarIndex];
+                }),
             bottomNavigationBar: CurvedNavigationBar(
               items: [
                 SvgPicture.asset(AppIcons.home),
