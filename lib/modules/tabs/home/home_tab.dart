@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:green_cycle/modules/tabs/home/widgets/green_points_section.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
 
@@ -14,28 +15,7 @@ class HomeTab extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: AppConstants.topPadding),
-          Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: AppConstants.horizontalPadding, vertical: 20.h),
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: AppColors.secondary,
-                borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 120.w,
-                  child: Text('عدد النقاط الخضراء:',
-                      style: TextStyle(
-                          fontSize: 24.sp, fontWeight: FontWeight.w300)),
-                ),
-                SizedBox(width: 30.w),
-                Text('40',
-                    style:
-                        TextStyle(fontSize: 40.sp, fontWeight: FontWeight.w600))
-              ],
-            ),
-          ),
+          const GreenPointsSection(),
           SizedBox(height: 15.h),
           Container(
             width: double.infinity,

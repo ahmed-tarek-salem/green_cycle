@@ -50,6 +50,7 @@ class UserData {
       gender: map['user']['gender'],
       isVerified: map['user']['IDVerified'],
       isActive: map['user']['active'],
+      totalPoints: map['user']['totalPoints'],
     );
   }
 }
