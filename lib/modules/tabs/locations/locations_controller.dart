@@ -2,27 +2,20 @@ import 'package:get/get.dart';
 import 'package:green_cycle/models/response_models/locations_response_model.dart';
 import 'package:green_cycle/modules/tabs/locations/locations_repo.dart';
 import 'package:green_cycle/theme/app_images.dart';
+import 'package:green_cycle/utilities/base/base_controller.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
-import 'package:green_cycle/utilities/mixins/overlay_mixin.dart';
 import 'package:green_cycle/utilities/network/dio_client.dart';
 
-class LocationsController extends GetxController with OverlyaysMixin {
+class LocationsController extends BaseController {
   final _repo = LocationsRepo();
   final _selectedLocationIndex = 0.obs;
   final _seletedDoorIndex = 0.obs;
-  final RxBool _isLoading = false.obs;
   Rx<LocationsResponseModel?> locationsResponseModel = Rx(null);
 
   @override
   void onInit() {
     getLocations();
     super.onInit();
-  }
-
-  bool get isLoading => _isLoading.value;
-  set setLoading(bool value) {
-    _isLoading.value = value;
-    update();
   }
 
   Future<void> getLocations() async {

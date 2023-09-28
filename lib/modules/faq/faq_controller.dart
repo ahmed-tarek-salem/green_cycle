@@ -1,14 +1,12 @@
 import 'package:get/get.dart';
 import 'package:green_cycle/models/response_models/question_response_model.dart';
 import 'package:green_cycle/modules/faq/faq_repo.dart';
+import 'package:green_cycle/utilities/base/base_controller.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
-import 'package:green_cycle/utilities/mixins/overlay_mixin.dart';
 import 'package:green_cycle/utilities/network/dio_client.dart';
 
-class FaqController extends GetxController with OverlyaysMixin {
+class FaqController extends BaseController {
   final _repo = FaqRepo();
-  final RxBool _isLoading = false.obs;
-  final RxBool _isError = false.obs;
   final RxList<QuestionResponseModel> questions = RxList();
 
   @override
@@ -16,18 +14,6 @@ class FaqController extends GetxController with OverlyaysMixin {
     getFaqs();
     print('object');
     super.onInit();
-  }
-
-  bool get isLoading => _isLoading.value;
-  set setLoading(bool value) {
-    _isLoading.value = value;
-    update();
-  }
-
-  bool get isError => _isLoading.value;
-  set setError(bool value) {
-    _isError.value = value;
-    update();
   }
 
   Future<void> getFaqs() async {

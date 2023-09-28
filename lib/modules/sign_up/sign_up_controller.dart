@@ -1,17 +1,17 @@
+import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/main.dart';
 import 'package:green_cycle/models/request_models/sign_up_request_model.dart';
 import 'package:green_cycle/models/response_models/user_response_model.dart';
 import 'package:green_cycle/modules/sign_up/sign_up_repo.dart';
+import 'package:green_cycle/utilities/base/base_controller.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
-import 'package:green_cycle/utilities/mixins/overlay_mixin.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
 import 'package:green_cycle/utilities/network/dio_client.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:dio/dio.dart' as dio;
 
-class SignUpController extends GetxController with OverlyaysMixin {
+class SignUpController extends BaseController {
   final _repo = SignUpRepo();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController nameController = TextEditingController();

@@ -1,3 +1,3 @@
-import 'package:get/get.dart';
+import 'package:green_cycle/utilities/base/base_controller.dart';
 
-class AboutUsController extends GetxController {}
+class AboutUsController extends BaseController {}

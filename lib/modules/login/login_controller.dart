@@ -4,12 +4,12 @@ import 'package:green_cycle/main.dart';
 import 'package:green_cycle/models/request_models/login_request_model.dart';
 import 'package:green_cycle/models/response_models/user_response_model.dart';
 import 'package:green_cycle/modules/login/login_repo.dart';
+import 'package:green_cycle/utilities/base/base_controller.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
-import 'package:green_cycle/utilities/mixins/overlay_mixin.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
 import 'package:green_cycle/utilities/network/dio_client.dart';
 
-class LoginController extends GetxController with OverlyaysMixin {
+class LoginController extends BaseController {
   final _repo = LoginRepo();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
