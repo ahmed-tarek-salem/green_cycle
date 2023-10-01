@@ -47,13 +47,11 @@ class LocationsController extends BaseController {
     update();
   }
 
-  final List<String> loactionImagePaths = [
-    AppImages.saha,
-    AppImages.newThird,
-    AppImages.newThird,
-  ];
   String? getSelectedMap() {
     if (locationsResponseModel.value == null) return null;
+    if (_selectedLocationIndex.value == 0) {
+      return locationsResponseModel.value!.yard[0].imageUrl;
+    }
     if (_selectedLocationIndex.value == 1) {
       return locationsResponseModel
           .value!.newBuildingMaps[_seletedDoorIndex.value].imageUrl;
