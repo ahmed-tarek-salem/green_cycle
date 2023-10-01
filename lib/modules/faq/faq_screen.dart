@@ -33,7 +33,7 @@ class FaqScreen extends GetView<FaqController> {
                 return ExpansionTile(
                   title: Text(question.question,
                       style: Get.textTheme.headlineSmall),
-                  shape: Border(),
+                  shape: const Border(),
                   iconColor: AppColors.primary,
                   collapsedIconColor: AppColors.primary,
                   children: [

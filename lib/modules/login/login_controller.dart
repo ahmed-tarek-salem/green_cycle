@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/main.dart';
@@ -33,6 +34,7 @@ class LoginController extends BaseController {
         });
       } else {
         localStorage.setToken(userResponseModel.token!);
+        DioClient.login(userResponseModel.token!);
         Get.offAndToNamed(AppRoutes.homeLayoutScreen);
       }
     } catch (e) {

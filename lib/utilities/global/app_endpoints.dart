@@ -6,4 +6,5 @@ class AppEndpoints {
   static const locations = '${baseUrl}map';
   static const faqs = '${baseUrl}faqs';
   static const user = '${baseUrl}users/me';
+  static const events = '${baseUrl}events';
 }

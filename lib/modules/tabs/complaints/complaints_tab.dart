@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:green_cycle/shared_widgets/primary_button.dart';
 import 'package:green_cycle/shared_widgets/primary_text_field.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/theme/app_images.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
+import 'package:green_cycle/utilities/navigation/app_routes.dart';
 
 class ComplaintsTab extends StatelessWidget {
   const ComplaintsTab({super.key});
@@ -18,15 +20,22 @@ class ComplaintsTab extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: AppConstants.topPadding),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 15.h),
-            decoration: BoxDecoration(
-                color: AppColors.secondary,
-                borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
-            child: Center(
-              child: Text(
-                'الأسئلة الأكثر شيوعاً',
-                style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w300),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(AppRoutes.faqScreen);
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 15.h),
+              decoration: BoxDecoration(
+                  color: AppColors.secondary,
+                  borderRadius:
+                      BorderRadius.circular(AppConstants.borderRadius)),
+              child: Center(
+                child: Text(
+                  'الأسئلة الأكثر شيوعاً',
+                  style:
+                      TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w300),
+                ),
               ),
             ),
           ),

@@ -3,12 +3,16 @@ import 'package:green_cycle/models/response_models/map_image_response_model.dart
 class LocationsResponseModel {
   final List<MapImageResponseModel> oldBuildingMaps;
   final List<MapImageResponseModel> newBuildingMaps;
+  final MapImageResponseModel yard;
 
   LocationsResponseModel(
-      {required this.oldBuildingMaps, required this.newBuildingMaps});
+      {required this.oldBuildingMaps,
+      required this.newBuildingMaps,
+      required this.yard});
 
   factory LocationsResponseModel.fromMap(Map<String, dynamic> map) {
     return LocationsResponseModel(
+      yard: MapImageResponseModel.fromMap(map['map']['yard']),
       oldBuildingMaps: List<MapImageResponseModel>.from(map['map']
               ['oldBuilding']
           .map((mapImage) => MapImageResponseModel.fromMap(mapImage))),

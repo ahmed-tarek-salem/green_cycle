@@ -11,8 +11,10 @@ class FaqController extends BaseController {
 
   @override
   void onInit() {
-    getFaqs();
-    print('object');
+    if (isInit) {
+      getFaqs();
+      isInit = false;
+    }
     super.onInit();
   }
 
@@ -21,7 +23,6 @@ class FaqController extends BaseController {
       setLoading = true;
       final data = await _repo.getFaqs();
       questions.addAll(data.questions);
-      print(questions.length);
       setError = false;
       update();
     } catch (e) {
