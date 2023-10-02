@@ -1,25 +1,37 @@
-class EventResponseModel {
+class EventesResponseModel {
+  final List<Event> events;
+
+  EventesResponseModel({required this.events});
+
+  factory EventesResponseModel.fromMap(Map<String, dynamic> map) {
+    return EventesResponseModel(
+        events: List<Event>.from(
+            map['data']['events'].map((eventMap) => Event.fromMap(eventMap))));
+  }
+}
+
+class Event {
   final String id;
   final String name;
   final String description;
   final String details;
-  final DateTime date;
+  final String date;
   final String location;
 
-  EventResponseModel(
+  Event(
       {required this.id,
       required this.name,
       required this.description,
       required this.details,
       required this.date,
       required this.location});
-  factory EventResponseModel.fromMap(Map<String, dynamic> map) {
-    return EventResponseModel(
-        id: map['data']['docs']['_id'],
-        name: map['data']['docs']['name'],
-        description: map['data']['docs']['description'],
-        details: map['data']['docs']['details'],
-        date: map['data']['docs']['date'],
-        location: map['data']['docs']['location']);
+  factory Event.fromMap(Map<String, dynamic> map) {
+    return Event(
+        id: map['_id'],
+        name: map['name'],
+        description: map['description'],
+        details: map['details'],
+        date: map['date'],
+        location: map['location']);
   }
 }

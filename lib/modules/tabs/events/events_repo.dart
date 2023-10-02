@@ -4,11 +4,10 @@ import 'package:green_cycle/utilities/global/app_endpoints.dart';
 import 'package:green_cycle/utilities/network/dio_client.dart';
 
 class EventsRepo {
-  Future<List<EventResponseModel>> getEvents() async {
+  Future<EventesResponseModel> getEvents() async {
     try {
       final response = await DioClient.privateDio.get(AppEndpoints.events);
-      return List<EventResponseModel>.from(response.data
-          .map((eventMap) => EventResponseModel.fromMap(eventMap)));
+      return EventesResponseModel.fromMap(response.data);
     } on DioException catch (e) {
       throw MyCustomException(e.response?.data['message'] ?? e.message);
     } catch (e) {

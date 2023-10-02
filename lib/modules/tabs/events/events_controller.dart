@@ -9,7 +9,7 @@ import 'package:green_cycle/utilities/network/dio_client.dart';
 
 class EventsController extends BaseController {
   final _repo = EventsRepo();
-  final RxList<EventResponseModel> events = RxList();
+  final RxList<Event> events = RxList();
 
   @override
   void onInit() {
@@ -24,7 +24,7 @@ class EventsController extends BaseController {
     try {
       setLoading = true;
       final events = await _repo.getEvents();
-      this.events.addAll(events);
+      this.events.addAll(events.events);
       setError = false;
       update();
     } catch (e) {

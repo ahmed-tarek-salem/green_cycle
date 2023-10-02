@@ -27,6 +27,7 @@ class UserData {
   final bool? isVerified;
   final bool? isActive;
   final int? totalPoints;
+  final List<Activity> activities;
 
   UserData({
     required this.name,
@@ -38,6 +39,7 @@ class UserData {
     this.totalPoints,
     this.isVerified,
     this.isActive,
+    required this.activities,
   });
 
   factory UserData.fromMap(Map<String, dynamic> map) {
@@ -51,6 +53,36 @@ class UserData {
       isVerified: map['user']['IDVerified'],
       isActive: map['user']['active'],
       totalPoints: map['user']['totalPoints'],
+      activities: List<Activity>.from(
+          map['activities'].map((activity) => Activity.fromMap(activity))),
+    );
+  }
+}
+
+class Activity {
+  final String id;
+  final String type;
+  final String details;
+  final String summary;
+  final int points;
+  final DateTime createdAt;
+
+  Activity(
+      {required this.id,
+      required this.type,
+      required this.details,
+      required this.summary,
+      required this.points,
+      required this.createdAt});
+
+  factory Activity.fromMap(Map<String, dynamic> map) {
+    return Activity(
+      id: map['_id'],
+      type: map['type'],
+      details: map['details'],
+      summary: map['summary'],
+      points: map['points'],
+      createdAt: DateTime.parse(map['createdAt']),
     );
   }
 }

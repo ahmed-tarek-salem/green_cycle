@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:green_cycle/modules/tabs/home/widgets/activities_section.dart';
 import 'package:green_cycle/modules/tabs/home/widgets/activity_tile.dart';
 import 'package:green_cycle/modules/tabs/home/widgets/green_points_section.dart';
 import 'package:green_cycle/theme/app_colors.dart';
@@ -43,18 +44,7 @@ class HomeTab extends StatelessWidget {
                         .copyWith(color: Colors.white),
                   ),
                 ),
-                Expanded(
-                  child: ListView.separated(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 14.h, horizontal: 10.w),
-                    separatorBuilder: (context, index) =>
-                        SizedBox(height: 10.h),
-                    itemBuilder: (context, index) {
-                      return ActivityTile();
-                    },
-                    itemCount: 2,
-                  ),
-                )
+                const ActivitiesSection()
               ],
             ),
           ),
