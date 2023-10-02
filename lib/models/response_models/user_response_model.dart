@@ -60,11 +60,11 @@ class UserData {
 }
 
 class Activity {
-  final String id;
-  final String type;
-  final String details;
-  final String summary;
-  final int points;
+  final String? id;
+  final String? type;
+  final String? details;
+  final String? summary;
+  final int? points;
   final DateTime createdAt;
 
   Activity(

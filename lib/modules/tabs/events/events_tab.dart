@@ -33,7 +33,9 @@ class EventsTab extends GetView<EventsController> {
                 physics: const BouncingScrollPhysics(),
                 separatorBuilder: (context, index) => SizedBox(height: 20.h),
                 itemBuilder: (context, index) {
-                  return const EventTile();
+                  return EventTile(
+                    event: controller.events[index],
+                  );
                 },
                 itemCount: controller.events.length,
               );

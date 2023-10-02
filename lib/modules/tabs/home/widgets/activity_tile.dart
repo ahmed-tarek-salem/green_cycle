@@ -34,10 +34,10 @@ class ActivityTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: Text(activity.summary),
+                child: Text(activity.summary ?? "-"),
               ),
               Text(
-                formatCreatedAt(activity.createdAt),
+                formatCreatedAt(activity.createdAt) ?? "-",
                 style: TextStyle(fontSize: 10.sp),
               )
             ],
@@ -46,7 +46,7 @@ class ActivityTile extends StatelessWidget {
           Align(
             alignment: Alignment.bottomLeft,
             child: Text(
-              activity.details,
+              activity.details ?? "-",
               style: TextStyle(fontSize: 10.sp),
             ),
           )

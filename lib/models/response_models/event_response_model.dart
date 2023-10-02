@@ -12,10 +12,10 @@ class EventesResponseModel {
 
 class Event {
   final String id;
-  final String name;
-  final String description;
-  final String details;
-  final String date;
+  final String? name;
+  final String? description;
+  final String? details;
+  final DateTime? date;
   final String location;
 
   Event(
@@ -31,7 +31,7 @@ class Event {
         name: map['name'],
         description: map['description'],
         details: map['details'],
-        date: map['date'],
+        date: DateTime.parse(map['date']),
         location: map['location']);
   }
 }
