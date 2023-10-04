@@ -8,6 +8,7 @@ class AppImages {
   static const String user = "${AppPaths.imagesPath}user.png";
   static const String success = "${AppPaths.imagesPath}success.png";
   static const String error = "${AppPaths.imagesPath}error.png";
+  static const String team = "${AppPaths.imagesPath}team.png";
 
   /// SVG **********************************************************************
   static const String logoSvg = "${AppPaths.imagesPath}logo.svg";
