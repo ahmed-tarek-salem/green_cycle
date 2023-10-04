@@ -50,6 +50,7 @@ class LocationsController extends BaseController {
   String? getSelectedMap() {
     if (locationsResponseModel.value == null) return null;
     if (_selectedLocationIndex.value == 0) {
+      print(locationsResponseModel.value!.yard[0].imageUrl);
       return locationsResponseModel.value!.yard[0].imageUrl;
     }
     if (_selectedLocationIndex.value == 1) {

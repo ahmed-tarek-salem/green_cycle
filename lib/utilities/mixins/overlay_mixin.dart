@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
+import 'package:green_cycle/shared_widgets/primary_button.dart';
 import 'package:green_cycle/theme/app_images.dart';
 
 mixin OverlyaysMixin on GetxController {
@@ -80,5 +82,43 @@ mixin OverlyaysMixin on GetxController {
             ),
           ),
         ));
+  }
+
+  showSuccessDialog(String title, String subtitle) {
+    final context = Get.context!;
+    return showAnimatedDialog(
+      context,
+      AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(AppImages.success),
+            const SizedBox(height: 20),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: Get.textTheme.titleLarge,
+            ),
+            SizedBox(
+              height: 13.sp,
+            ),
+            Text(
+              subtitle,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 30.sp,
+            ),
+            PrimaryButton(
+              onTap: Get.back,
+              text: 'العودة',
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

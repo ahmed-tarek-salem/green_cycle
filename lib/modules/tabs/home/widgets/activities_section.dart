@@ -17,10 +17,10 @@ class ActivitiesSection extends GetView<HomeLayoutController> {
         separatorBuilder: (context, index) => SizedBox(height: 10.h),
         itemBuilder: (context, index) {
           return ActivityTile(
-            activity: controller.user.activities[index],
+            activity: controller.user.activities![index],
           );
         },
-        itemCount: controller.user.activities.length,
+        itemCount: controller.user.activities?.length ?? 0,
       ),
     );
   }

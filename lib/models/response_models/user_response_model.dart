@@ -27,7 +27,7 @@ class UserData {
   final bool? isVerified;
   final bool? isActive;
   final int? totalPoints;
-  final List<Activity> activities;
+  final List<Activity>? activities;
 
   UserData({
     required this.name,
@@ -53,8 +53,10 @@ class UserData {
       isVerified: map['user']['IDVerified'],
       isActive: map['user']['active'],
       totalPoints: map['user']['totalPoints'],
-      activities: List<Activity>.from(
-          map['activities'].map((activity) => Activity.fromMap(activity))),
+      activities: map['activities'] == null
+          ? null
+          : List<Activity>.from(
+              map['activities'].map((activity) => Activity.fromMap(activity))),
     );
   }
 }
