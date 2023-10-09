@@ -10,6 +10,7 @@ import 'package:green_cycle/shared_widgets/custom_error_widget.dart';
 import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/theme/app_icons.dart';
+import 'package:green_cycle/utilities/navigation/app_routes.dart';
 
 class HomeLayoutScreen extends GetView<HomeLayoutController> {
   const HomeLayoutScreen({super.key});
@@ -27,7 +28,9 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.startFloat,
             floatingActionButton: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(AppRoutes.actionScreen);
+              },
               backgroundColor: AppColors.primary,
               child: Icon(
                 Icons.add,

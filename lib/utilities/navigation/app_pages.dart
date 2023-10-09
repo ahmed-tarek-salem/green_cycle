@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:green_cycle/modules/about_us/about_us_bindings.dart';
 import 'package:green_cycle/modules/about_us/about_us_screen.dart';
+import 'package:green_cycle/modules/action/action_bindings.dart';
+import 'package:green_cycle/modules/action/action_screen.dart';
 import 'package:green_cycle/modules/faq/faq_bindings.dart';
 import 'package:green_cycle/modules/faq/faq_screen.dart';
 import 'package:green_cycle/modules/home_layout/home_layout_bindings.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: AppRoutes.faqScreen,
       page: () => const FaqScreen(),
       binding: FaqBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.actionScreen,
+      page: () => const ActionScreen(),
+      binding: ActionBindigns(),
     ),
     GetPage(
       name: AppRoutes.successs,

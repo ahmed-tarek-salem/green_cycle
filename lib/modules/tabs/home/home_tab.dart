@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/modules/tabs/home/widgets/activities_section.dart';
-import 'package:green_cycle/modules/tabs/home/widgets/activity_tile.dart';
 import 'package:green_cycle/modules/tabs/home/widgets/green_points_section.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';

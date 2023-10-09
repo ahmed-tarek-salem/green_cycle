@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 
 AppBar returnHomeAppBar(String title) {
@@ -7,7 +8,7 @@ AppBar returnHomeAppBar(String title) {
     centerTitle: true,
     title: Text(
       title,
-      style: const TextStyle(fontWeight: FontWeight.w400),
+      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18.sp),
     ),
   );
 }
