@@ -28,41 +28,71 @@ class EventTile extends StatelessWidget {
           borderRadius:
               BorderRadiusDirectional.circular(AppConstants.borderRadius),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
           children: [
-            Expanded(
-                flex: 3,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      event.name ?? '-',
-                      style: Get.textTheme.titleLarge,
-                    ),
-                    SizedBox(height: 20.h),
-                    Text(event.description ?? '-'),
-                  ],
-                )),
-            Expanded(
-                flex: 2,
-                child: Column(
-                  children: [
-                    Text(
-                      dayNumber,
-                      style: TextStyle(
-                          fontSize: 64.sp, fontWeight: FontWeight.w400),
-                    ),
-                    Text(monthName),
-                    SizedBox(height: 4.h),
-                    Text(
-                      event.details ?? '-',
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 4.h),
-                    Text(time),
-                  ],
-                )),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: Text(
+                    event.name ?? '-',
+                    textAlign: TextAlign.center,
+                    style: Get.textTheme.titleLarge!.copyWith(height: 1),
+                  ),
+                  //  Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Text(
+                  //       event.name ?? '-',
+                  //       style: Get.textTheme.titleLarge!.copyWith(height: 1),
+                  //     ),
+                  //     SizedBox(height: 40.h),
+                  //     Text(event.details ?? '-'),
+                  //   ],
+                  // ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    dayNumber,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 64.sp,
+                        fontWeight: FontWeight.w400,
+                        height: 1),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                    flex: 3,
+                    child: Column(
+                      children: [
+                        Text(event.details ?? '-'),
+                      ],
+                    )),
+                Expanded(
+                    flex: 2,
+                    child: Column(
+                      children: [
+                        Text(
+                          monthName,
+                          style: Get.textTheme.headlineMedium,
+                        ),
+                        SizedBox(height: 6.h),
+                        Text(
+                          event.location ?? '-',
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 6.h),
+                        Text(time),
+                      ],
+                    ))
+              ],
+            )
           ],
         ));
   }

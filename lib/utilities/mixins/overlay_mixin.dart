@@ -30,7 +30,7 @@ mixin OverlyaysMixin on GetxController {
           );
         },
         transitionDuration: const Duration(milliseconds: 200),
-        barrierDismissible: true,
+        barrierDismissible: false,
         barrierLabel: '',
         context: context,
         pageBuilder: (context, animation1, animation2) {
@@ -84,7 +84,7 @@ mixin OverlyaysMixin on GetxController {
         ));
   }
 
-  showSuccessDialog(String title, String subtitle) {
+  showSuccessDialog(String title, String subtitle, {VoidCallback? onTap}) {
     final context = Get.context!;
     return showAnimatedDialog(
       context,
@@ -113,7 +113,7 @@ mixin OverlyaysMixin on GetxController {
               height: 30.sp,
             ),
             PrimaryButton(
-              onTap: Get.back,
+              onTap: onTap ?? Get.back,
               text: 'العودة',
             ),
           ],

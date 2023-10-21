@@ -16,7 +16,7 @@ class Event {
   final String? description;
   final String? details;
   final DateTime? date;
-  final String location;
+  final String? location;
 
   Event(
       {required this.id,

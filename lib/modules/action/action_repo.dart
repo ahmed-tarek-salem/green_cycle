@@ -6,6 +6,7 @@ import 'package:dio/dio.dart' as dio;
 class ActionRepo {
   Future<bool> submitAction(ActivityRequestModel activityRequestModel) async {
     try {
+      print(activityRequestModel.toMap());
       final response = await DioClient.privateDio.post(AppEndpoints.activities,
           data: dio.FormData.fromMap(activityRequestModel.toMap()));
       print(response.data);

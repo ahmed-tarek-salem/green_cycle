@@ -30,9 +30,13 @@ class ActionController extends BaseController {
               ? null
               : dio.MultipartFile.fromFileSync(image!.path));
       await _repo.submitAction(activityRequestModel);
+
       showSuccessDialog('تم إرسال مشاركتك بنجاح',
-          'نشكرك على تفاعلك معنا، بمجرد قبول مشاركتك سوف تحصل على ٥ نقاط خضراء جديدة!');
-      clearControllers();
+          'نشكرك على تفاعلك معنا، بمجرد قبول مشاركتك سوف تحصل على ٥ نقاط خضراء جديدة!',
+          onTap: () {
+        Get.back();
+        Get.back();
+      });
     } catch (e) {
       final exceptionMessage =
           (e is MyCustomException) ? e.message : AppConstants.error;

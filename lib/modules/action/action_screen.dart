@@ -22,7 +22,7 @@ class ActionScreen extends GetView<ActionController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: returnHomeAppBar('استخدم الصناديق'),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
             horizontal: AppConstants.horizontalPadding,
             vertical: AppConstants.topPadding),
@@ -41,8 +41,9 @@ class ActionScreen extends GetView<ActionController> {
             PrimaryTextField(
               hintText: 'أضف وصفاً (اختياري)',
               maxLines: 2,
+              controller: controller.actionDetailsController,
             ),
-            const Spacer(),
+            SizedBox(height: 30.h),
             PrimaryButton(onTap: controller.submitAction, text: 'تأكيد')
           ],
         ),
