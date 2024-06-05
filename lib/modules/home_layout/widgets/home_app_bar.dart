@@ -8,7 +8,8 @@ AppBar returnHomeAppBar(String title) {
     centerTitle: true,
     title: Text(
       title,
-      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18.sp),
+      style: TextStyle(
+          fontWeight: FontWeight.w400, fontSize: 18.sp, color: AppColors.white),
     ),
   );
 }

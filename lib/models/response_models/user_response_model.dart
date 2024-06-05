@@ -28,6 +28,7 @@ class UserData {
   final bool? isActive;
   final int? totalPoints;
   final List<Activity>? activities;
+  final bool? isAbleToUploadActivity;
 
   UserData({
     required this.name,
@@ -39,6 +40,7 @@ class UserData {
     this.totalPoints,
     this.isVerified,
     this.isActive,
+    required this.isAbleToUploadActivity,
     required this.activities,
   });
 
@@ -53,6 +55,7 @@ class UserData {
       isVerified: map['user']['IDVerified'],
       isActive: map['user']['active'],
       totalPoints: map['user']['totalPoints'],
+      isAbleToUploadActivity: map['user']['isAbleToUploadActivity'],
       activities: map['activities'] == null
           ? null
           : List<Activity>.from(

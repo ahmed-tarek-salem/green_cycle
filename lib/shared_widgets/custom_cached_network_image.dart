@@ -20,8 +20,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: imageUrl ??
-          "https://hawahabetary.designfy.net/dashboard-assets/images/default.png",
+      imageUrl: imageUrl ?? "",
       height: height,
       width: width,
       placeholder: (context, url) => CustomProgressIndicator(

@@ -7,6 +7,7 @@ import 'package:green_cycle/modules/tabs/events/events_controller.dart';
 import 'package:green_cycle/modules/tabs/events/widgets/event_tile.dart';
 import 'package:green_cycle/shared_widgets/custom_error_widget.dart';
 import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
+import 'package:green_cycle/theme/app_images.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
 
 class EventsTab extends GetView<EventsController> {
@@ -28,6 +29,17 @@ class EventsTab extends GetView<EventsController> {
                 return CustomErrorWidget(onRefresh: () {
                   controller.getEvents();
                 });
+              } else if (controller.events.isEmpty) {
+                return Column(
+                  children: [
+                    Image.asset(AppImages.event),
+                    SizedBox(height: 20.h),
+                    Text('لا توجد فعاليات قادمة',
+                        style: Get.textTheme.displayMedium),
+                    SizedBox(height: 5.h),
+                    Text('إذا تمت إضافة أي فعالية جديدة سوف تظهر هنا'),
+                  ],
+                );
               }
               return ListView.separated(
                 physics: const BouncingScrollPhysics(),

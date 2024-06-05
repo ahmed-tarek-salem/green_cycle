@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +13,7 @@ import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/theme/app_icons.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
+import 'package:upgrader/upgrader.dart';
 
 class HomeLayoutScreen extends GetView<HomeLayoutController> {
   const HomeLayoutScreen({super.key});
@@ -20,45 +23,66 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
     return GetBuilder(
         init: controller,
         builder: (context) {
-          return Scaffold(
-            drawer: AppDrawer(controller: controller),
-            resizeToAvoidBottomInset: false,
-            appBar:
-                returnHomeAppBar(controller.titles[controller.getNavBarIndex]),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.startFloat,
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                Get.toNamed(AppRoutes.actionScreen);
-              },
-              backgroundColor: AppColors.primary,
-              child: Icon(
-                Icons.add,
-                size: 30.sp,
-              ),
-            ),
-            body: GetBuilder(
+          return UpgradeAlert(
+            upgrader: Upgrader(
+                showIgnore: false,
+                showLater: false,
+                languageCode: 'ar',
+                showReleaseNotes: false,
+                dialogStyle: Platform.isIOS
+                    ? UpgradeDialogStyle.cupertino
+                    : UpgradeDialogStyle.material),
+            child: Scaffold(
+              drawer: AppDrawer(controller: controller),
+              resizeToAvoidBottomInset: false,
+              appBar: returnHomeAppBar(
+                  controller.titles[controller.getNavBarIndex]),
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.startFloat,
+              floatingActionButton: GetBuilder(
                 init: controller,
                 builder: (_) {
-                  if (controller.isLoading) {
-                    return const CustomProgressIndicator();
-                  } else if (controller.isError) {
-                    return CustomErrorWidget(onRefresh: controller.getUser);
+                  if (controller.isLoading ||
+                      controller.isError ||
+                      controller.user.isAbleToUploadActivity != true) {
+                    return const SizedBox();
                   }
-                  return controller.tabs[controller.getNavBarIndex];
-                }),
-            bottomNavigationBar: CurvedNavigationBar(
-              items: [
-                SvgPicture.asset(AppIcons.home),
-                SvgPicture.asset(AppIcons.location),
-                SvgPicture.asset(AppIcons.calendar),
-                SvgPicture.asset(AppIcons.pin),
-              ],
-              onTap: (val) {
-                controller.navBarIndex = val;
-              },
-              color: AppColors.primary,
-              backgroundColor: Colors.transparent,
+                  return FloatingActionButton(
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.actionScreen);
+                    },
+                    backgroundColor: AppColors.primary,
+                    child: Icon(
+                      Icons.add,
+                      size: 30.sp,
+                      color: AppColors.white,
+                    ),
+                  );
+                },
+              ),
+              body: GetBuilder(
+                  init: controller,
+                  builder: (_) {
+                    if (controller.isLoading) {
+                      return const CustomProgressIndicator();
+                    } else if (controller.isError) {
+                      return CustomErrorWidget(onRefresh: controller.getUser);
+                    }
+                    return controller.tabs[controller.getNavBarIndex];
+                  }),
+              bottomNavigationBar: CurvedNavigationBar(
+                items: [
+                  SvgPicture.asset(AppIcons.home),
+                  SvgPicture.asset(AppIcons.location),
+                  SvgPicture.asset(AppIcons.calendar),
+                  SvgPicture.asset(AppIcons.pin),
+                ],
+                onTap: (val) {
+                  controller.navBarIndex = val;
+                },
+                color: AppColors.primary,
+                backgroundColor: Colors.transparent,
+              ),
             ),
           );
         });

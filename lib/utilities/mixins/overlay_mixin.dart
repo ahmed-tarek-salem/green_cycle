@@ -69,7 +69,7 @@ mixin OverlyaysMixin on GetxController {
                     Navigator.pop(context);
                   },
                   style: TextButton.styleFrom(
-                    primary: Colors.red,
+                    foregroundColor: Colors.red,
                     side: const BorderSide(color: Colors.red),
                     padding: EdgeInsets.symmetric(
                         horizontal: 30.sp, vertical: 12.sp),
