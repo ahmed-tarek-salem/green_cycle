@@ -107,13 +107,19 @@ class LocationsTab extends GetView<LocationsController> {
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return InteractiveViewer(
-                                maxScale: 5,
-                                child: CustomCachedNetworkImage(
-                                    height: double.infinity,
-                                    width: double.infinity,
-                                    fit: BoxFit.contain,
-                                    imageUrl: controller.getSelectedMap()),
+                              return Scaffold(
+                                appBar: AppBar(
+                                  iconTheme: const IconThemeData(
+                                      color: AppColors.black),
+                                ),
+                                body: InteractiveViewer(
+                                  maxScale: 5,
+                                  child: CustomCachedNetworkImage(
+                                      height: double.infinity,
+                                      width: double.infinity,
+                                      fit: BoxFit.contain,
+                                      imageUrl: controller.getSelectedMap()),
+                                ),
                               );
                             }));
                           },

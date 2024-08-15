@@ -29,7 +29,7 @@ if (keystorePropertiesFile.exists()) {
 
 
 android {
-    namespace "net.alexpharmacy.green_cycle"
+    namespace "net.alexpharmacy.greencycle"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 

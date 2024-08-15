@@ -56,7 +56,7 @@ mixin OverlyaysMixin on GetxController {
                 ),
                 Text(
                   message,
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                   maxLines: 5,
                   overflow: TextOverflow.ellipsis,

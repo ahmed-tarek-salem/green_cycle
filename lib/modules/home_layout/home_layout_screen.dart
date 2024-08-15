@@ -25,13 +25,11 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
         builder: (context) {
           return UpgradeAlert(
             upgrader: Upgrader(
-                showIgnore: false,
-                showLater: false,
+                // showIgnore: false,
+                // showLater: false,
                 languageCode: 'ar',
-                showReleaseNotes: false,
-                dialogStyle: Platform.isIOS
-                    ? UpgradeDialogStyle.cupertino
-                    : UpgradeDialogStyle.material),
+                // showReleaseNotes: false,
+                durationUntilAlertAgain: const Duration(minutes: 10)),
             child: Scaffold(
               drawer: AppDrawer(controller: controller),
               resizeToAvoidBottomInset: false,
