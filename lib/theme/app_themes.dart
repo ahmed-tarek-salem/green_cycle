@@ -17,6 +17,15 @@ class AppThemes {
       cardColor: AppColors.white,
       primaryColor: AppColors.primary,
       indicatorColor: AppColors.primary,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primary,
+              foregroundColor: Colors.white,
+              padding: EdgeInsets.symmetric(vertical: 15.h),
+              textStyle: Get.textTheme.displaySmall,
+              shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(AppConstants.borderRadius)))),
       inputDecorationTheme: InputDecorationTheme(
         errorMaxLines: 2,
         fillColor: AppColors.secondary,
@@ -59,7 +68,7 @@ class AppThemes {
         titleMedium: TextStyle(
           color: AppColors.primary,
           fontWeight: FontWeight.w400,
-          fontSize: 12.sp,
+          fontSize: 24.sp,
         ),
         headlineLarge: TextStyle(
           color: AppColors.primary,

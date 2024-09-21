@@ -106,6 +106,12 @@ class AppDrawer extends StatelessWidget {
                     },
                     title: 'الأسئلة الأكثر شيوعاً',
                   ),
+                  DrawerTile(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.surveysScreen);
+                    },
+                    title: 'استطلاعات الرأي',
+                  ),
                   // DrawerTile(
                   //   onTap: () {},
                   //   title: 'استبدل نقاطك الخضراء',

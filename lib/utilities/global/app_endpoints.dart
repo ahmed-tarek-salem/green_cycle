@@ -8,4 +8,6 @@ class AppEndpoints {
   static const user = '${baseUrl}users/me';
   static const events = '${baseUrl}events';
   static const activities = '${baseUrl}activities';
+  static const surveys = '${baseUrl}questionnaires';
+  static const surveyResponse = '${baseUrl}responses/response';
 }

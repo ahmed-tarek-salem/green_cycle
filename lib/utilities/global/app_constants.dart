@@ -1,7 +1,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppConstants {
-  static double horizontalPadding = 30.w;
+  static const double horizontalPadding = 30;
   static double topPadding = 15.h;
   static double borderRadius = 12;
   static int dayBySeconds = 86400;

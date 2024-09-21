@@ -13,6 +13,10 @@ import 'package:green_cycle/modules/sign_up/sign_up_bindigns.dart';
 import 'package:green_cycle/modules/sign_up/sign_up_screen.dart';
 import 'package:green_cycle/modules/sign_up/success_process.dart';
 import 'package:green_cycle/modules/splash/splash_screen.dart';
+import 'package:green_cycle/modules/survey_details/survery_details_screen.dart';
+import 'package:green_cycle/modules/survey_details/survey_details_bindings.dart';
+import 'package:green_cycle/modules/surveys/survey_bindings.dart';
+import 'package:green_cycle/modules/surveys/survey_screen.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
 
 class AppPages {
@@ -54,6 +58,16 @@ class AppPages {
     GetPage(
       name: AppRoutes.successs,
       page: () => SuccessProcessScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.surveysScreen,
+      page: () => const SurveysScreen(),
+      binding: SurveyBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.surveyDetailsScreen,
+      page: () => const SurveryDetailsScreen(),
+      binding: SurveyDetailsBindings(),
     ),
   ];
 }
