@@ -30,7 +30,10 @@ class GreenPointsSection extends GetView<HomeLayoutController> {
           GetBuilder(
               init: controller,
               builder: (_) {
-                return Text(controller.user.totalPoints.toString(),
+                return Text(
+                    //TODO: Remove dummy data
+                    "450",
+                    //controller.user.totalPoints.toString(),
                     style: TextStyle(
                         fontSize: 40.sp, fontWeight: FontWeight.w600));
               })

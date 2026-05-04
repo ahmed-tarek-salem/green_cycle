@@ -18,33 +18,34 @@ class HomeTab extends StatelessWidget {
           SizedBox(height: AppConstants.topPadding),
           const GreenPointsSection(),
           SizedBox(height: 15.h),
-          Container(
-            width: double.infinity,
-            height: 260.h,
-            decoration: BoxDecoration(
-                color: AppColors.secondary,
-                borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(
-                      vertical: 15.h,
-                      horizontal: AppConstants.horizontalPadding),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(AppConstants.borderRadius),
-                          topRight:
-                              Radius.circular(AppConstants.borderRadius))),
-                  child: Text(
-                    'آخر إسهاماتك',
-                    style: Get.textTheme.headlineSmall!
-                        .copyWith(color: Colors.white),
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: AppColors.secondary,
+                  borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                        vertical: 15.h,
+                        horizontal: AppConstants.horizontalPadding),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: AppColors.primary,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(AppConstants.borderRadius),
+                            topRight:
+                                Radius.circular(AppConstants.borderRadius))),
+                    child: Text(
+                      'آخر إسهاماتك',
+                      style: Get.textTheme.headlineSmall!
+                          .copyWith(color: Colors.white),
+                    ),
                   ),
-                ),
-                const ActivitiesSection()
-              ],
+                  const ActivitiesSection()
+                ],
+              ),
             ),
           ),
           SizedBox(height: 15.h),

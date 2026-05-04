@@ -74,6 +74,7 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
                   SvgPicture.asset(AppIcons.location),
                   SvgPicture.asset(AppIcons.calendar),
                   SvgPicture.asset(AppIcons.pin),
+                  SvgPicture.asset(AppIcons.trophy),
                 ],
                 onTap: (val) {
                   controller.navBarIndex = val;
