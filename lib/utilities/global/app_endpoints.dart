@@ -1,5 +1,5 @@
 class AppEndpoints {
-  static const baseUrl = 'http://100.56.17.112/api/v1/';
+  static const baseUrl = 'http://98.92.252.75/api/v1/';
   static const login = '${baseUrl}auth/log-in';
   static const signup = '${baseUrl}auth/sign-up';
   static const veifyOtp = '${baseUrl}auth/verify-otp';
@@ -10,4 +10,6 @@ class AppEndpoints {
   static const activities = '${baseUrl}activities';
   static const surveys = '${baseUrl}questionnaires';
   static const surveyResponse = '${baseUrl}responses/response';
+  static const leaderboard = '${baseUrl}users/leaderboard';
+  static const leaderboardMe = '${baseUrl}users/leaderboard/me';
 }

@@ -7,16 +7,22 @@ class CurrentUserSection extends StatelessWidget {
   final int rank;
   final String name;
   final int points;
+  final int tiedWith;
 
   const CurrentUserSection({
     required this.rank,
     required this.name,
     required this.points,
+    this.tiedWith = 0,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final hasTies = tiedWith > 1;
+    final message = hasTies
+        ? 'تتشارك المركز مع ${tiedWith - 1} ${tiedWith - 1 == 1 ? 'مستخدم آخر' : 'مستخدمين آخرين'}. اجمع المزيد من النقاط للتقدم في الترتيب!'
+        : 'أنت على بعد خطوات قليلة من المراكز الأولى! اجمع المزيد من النقاط للحصول على مكافآت حصرية';
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(
@@ -99,7 +105,7 @@ class CurrentUserSection extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             child: Text(
-              'أنت على بعد خطوات قليلة من المراكز الأولى! اجمع المزيد من النقاط للحصول على مكافآت حصرية',
+              message,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 12.sp,
