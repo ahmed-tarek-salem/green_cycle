@@ -33,17 +33,12 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app needs access to your photo library to scan your university ID card.</string>
+	<string>Green Cycle accesses your photo library so you can upload a photo of your Faculty of Pharmacy student ID card. The image is used only to verify your enrollment and is not shared with third parties.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Green Cycle uses your camera so you can take photos of your recycling activities and campus complaints. These photos are submitted with your activity or complaint so administrators can review them and award you green points.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>

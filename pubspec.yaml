@@ -2,7 +2,7 @@ name: green_cycle
 description: A new Flutter project.
 
 publish_to: "none"
-version: 1.0.3+7
+version: 1.0.3+9
 
 environment:
   sdk: ">=3.1.0 <4.0.0"
@@ -32,7 +32,9 @@ dependencies:
   url_launcher: ^6.3.1
 
 dependency_overrides:
-  url_launcher_ios: ^6.3.1
+  # Pinned below 6.4.0 because 6.4.x requires a newer Flutter iOS engine
+  # (uses `registrar.viewController` as a property, broken on Flutter 3.35.4).
+  url_launcher_ios: ">=6.3.1 <6.4.0"
 
 dev_dependencies:
   flutter_lints: ^6.0.0
