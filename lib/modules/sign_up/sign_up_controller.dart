@@ -8,6 +8,7 @@ import 'package:green_cycle/modules/sign_up/sign_up_repo.dart';
 import 'package:green_cycle/utilities/base/base_controller.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
+import 'package:green_cycle/utilities/network/auth_session.dart';
 import 'package:green_cycle/utilities/network/dio_client.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -85,10 +86,17 @@ class SignUpController extends BaseController {
   }
 
   checkIfSigned() async {
-    if (localStorage.getToken() != null) {
-      await keepLogged(localStorage.getToken()!);
-      Get.offNamed(AppRoutes.homeLayoutScreen);
+    final token = localStorage.getToken();
+    if (token == null) return;
+    if (AuthSession.isJwtExpired(token)) {
+      // Stored session has already expired; drop it and stay in the auth flow
+      // instead of auto-navigating into a screen that will fail to load.
+      DioClient.logout();
+      localStorage.clearToken();
+      return;
     }
+    await keepLogged(token);
+    Get.offNamed(AppRoutes.homeLayoutScreen);
   }
 
   @override

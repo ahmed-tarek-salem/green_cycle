@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
 import 'package:green_cycle/shared_widgets/primary_button.dart';
 import 'package:green_cycle/theme/app_images.dart';
+import 'package:green_cycle/utilities/network/dio_client.dart';
 
 mixin OverlyaysMixin on GetxController {
   void hideLoadingOverlay() {
@@ -39,6 +40,9 @@ mixin OverlyaysMixin on GetxController {
   }
 
   Future showErrorDialog(String message) async {
+    // Don't stack error dialogs while the app is redirecting an expired session
+    // back to the login screen.
+    if (DioClient.isHandlingSessionExpiry) return;
     final context = Get.context!;
     return showAnimatedDialog(
         context,
