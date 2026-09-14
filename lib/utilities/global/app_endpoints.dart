@@ -1,15 +1,26 @@
+import 'package:green_cycle/utilities/global/app_environment.dart';
+
 class AppEndpoints {
-  static const baseUrl = 'https://green-cycle-juiq.onrender.com/api/v1/';
-  static const login = '${baseUrl}auth/log-in';
-  static const signup = '${baseUrl}auth/sign-up';
-  static const veifyOtp = '${baseUrl}auth/verify-otp';
-  static const locations = '${baseUrl}map';
-  static const faqs = '${baseUrl}faqs';
-  static const user = '${baseUrl}users/me';
-  static const events = '${baseUrl}events';
-  static const activities = '${baseUrl}activities';
-  static const surveys = '${baseUrl}questionnaires';
-  static const surveyResponse = '${baseUrl}responses/response';
-  static const leaderboard = '${baseUrl}users/leaderboard';
-  static const leaderboardMe = '${baseUrl}users/leaderboard/me';
+  /// Resolved live from the global [appEnvironment] switch, so flipping the
+  /// environment re-points every endpoint below without any other change.
+  static String get baseUrl => appEnvironment.baseUrl;
+
+  static String get login => '${baseUrl}auth/log-in';
+  static String get signup => '${baseUrl}auth/sign-up';
+  static String get veifyOtp => '${baseUrl}auth/verify-otp';
+  static String get locations => '${baseUrl}map';
+  static String get faqs => '${baseUrl}faqs';
+  static String get user => '${baseUrl}users/me';
+  static String get events => '${baseUrl}events';
+  static String get activities => '${baseUrl}activities';
+  static String get surveys => '${baseUrl}questionnaires';
+  static String get surveyResponse => '${baseUrl}responses/response';
+  static String get leaderboard => '${baseUrl}users/leaderboard';
+  static String get leaderboardMe => '${baseUrl}users/leaderboard/me';
+  static String get carpoolDistricts => '${baseUrl}carpool/districts';
+  static String get carpoolDays => '${baseUrl}carpool/days';
+  static String get carpoolOfferMe => '${baseUrl}carpool/offers/me';
+  static String get carpoolSearch => '${baseUrl}carpool/offers/search';
+  static String carpoolContact(String offerId) =>
+      '${baseUrl}carpool/offers/$offerId/contact';
 }

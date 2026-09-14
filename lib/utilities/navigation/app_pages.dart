@@ -1,5 +1,10 @@
 import 'package:get/get.dart';
 import 'package:green_cycle/modules/about_us/about_us_bindings.dart';
+import 'package:green_cycle/modules/carpool/carpool_bindings.dart';
+import 'package:green_cycle/modules/carpool/carpool_home_screen.dart';
+import 'package:green_cycle/modules/carpool/driver/driver_setup_screen.dart';
+import 'package:green_cycle/modules/carpool/driver/my_offer_screen.dart';
+import 'package:green_cycle/modules/carpool/passenger/passenger_search_screen.dart';
 import 'package:green_cycle/modules/about_us/about_us_screen.dart';
 import 'package:green_cycle/modules/action/action_bindings.dart';
 import 'package:green_cycle/modules/action/action_screen.dart';
@@ -68,6 +73,26 @@ class AppPages {
       name: AppRoutes.surveyDetailsScreen,
       page: () => const SurveryDetailsScreen(),
       binding: SurveyDetailsBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.carpoolHomeScreen,
+      page: () => const CarpoolHomeScreen(),
+      binding: CarpoolBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.carpoolDriverSetupScreen,
+      page: () => const DriverSetupScreen(),
+      binding: CarpoolBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.carpoolMyOfferScreen,
+      page: () => const MyOfferScreen(),
+      binding: CarpoolBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.carpoolSearchScreen,
+      page: () => const PassengerSearchScreen(),
+      binding: CarpoolBindings(),
     ),
   ];
 }

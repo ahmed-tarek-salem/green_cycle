@@ -13,4 +13,8 @@ class AppRoutes {
   static const String actionScreen = "/action-screen";
   static const String surveysScreen = "/surveys-screen";
   static const String surveyDetailsScreen = "/survey-details-screen";
+  static const String carpoolHomeScreen = "/carpool-home-screen";
+  static const String carpoolDriverSetupScreen = "/carpool-driver-setup-screen";
+  static const String carpoolMyOfferScreen = "/carpool-my-offer-screen";
+  static const String carpoolSearchScreen = "/carpool-search-screen";
 }

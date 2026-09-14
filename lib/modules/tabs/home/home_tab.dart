@@ -5,6 +5,7 @@ import 'package:green_cycle/modules/tabs/home/widgets/activities_section.dart';
 import 'package:green_cycle/modules/tabs/home/widgets/green_points_section.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
+import 'package:green_cycle/utilities/navigation/app_routes.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({super.key});
@@ -18,12 +19,42 @@ class HomeTab extends StatelessWidget {
           SizedBox(height: AppConstants.topPadding),
           const GreenPointsSection(),
           SizedBox(height: 15.h),
+          InkWell(
+            onTap: () => Get.toNamed(AppRoutes.carpoolHomeScreen),
+            borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+              decoration: BoxDecoration(
+                color: AppColors.primary,
+                borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.directions_car,
+                      color: AppColors.white, size: 24.sp),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: Text(
+                      'مشاركة السيارة',
+                      style: Get.textTheme.headlineSmall!
+                          .copyWith(color: AppColors.white),
+                    ),
+                  ),
+                  Icon(Icons.arrow_back_ios,
+                      color: AppColors.white, size: 16.sp),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 15.h),
           Expanded(
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
                   color: AppColors.secondary,
-                  borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
+                  borderRadius:
+                      BorderRadius.circular(AppConstants.borderRadius)),
               child: Column(
                 children: [
                   Container(

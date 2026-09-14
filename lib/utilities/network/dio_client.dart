@@ -7,7 +7,7 @@ import 'package:green_cycle/utilities/network/auth_session.dart';
 import 'package:green_cycle/utilities/storage/local_storage.dart';
 
 class DioClient {
-  static const baseUrl = AppEndpoints.baseUrl;
+  static String get baseUrl => AppEndpoints.baseUrl;
   static final _options = BaseOptions(
     connectTimeout: const Duration(seconds: 90),
     baseUrl: baseUrl,
