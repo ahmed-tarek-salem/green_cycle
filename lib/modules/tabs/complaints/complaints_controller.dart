@@ -18,7 +18,7 @@ class ComplaintsController extends BaseController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   RxInt imageKeyIndex = 0.obs;
 
-  submitComplaint() async {
+  Future<void> submitComplaint() async {
     if (!formKey.currentState!.validate()) {
       return;
     }
@@ -49,7 +49,7 @@ class ComplaintsController extends BaseController {
     }
   }
 
-  clearControllers() {
+  void clearControllers() {
     complaintTitleController.clear();
     complaintDetailsController.clear();
     image = null;

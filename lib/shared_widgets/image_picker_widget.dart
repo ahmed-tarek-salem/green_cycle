@@ -20,7 +20,7 @@ class ImagePickerWidget extends StatefulWidget {
 
 class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   XFile? image;
-  openCamera() async {
+  Future<void> openCamera() async {
     final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image != null) {
       setState(() {

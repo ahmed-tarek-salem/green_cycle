@@ -6,8 +6,7 @@ import 'package:green_cycle/theme/app_colors.dart';
 class CustomProgressIndicator extends StatelessWidget {
   final double? size;
   final Color? color;
-  const CustomProgressIndicator({Key? key, this.size, this.color})
-      : super(key: key);
+  const CustomProgressIndicator({super.key, this.size, this.color});
 
   @override
   Widget build(BuildContext context) {

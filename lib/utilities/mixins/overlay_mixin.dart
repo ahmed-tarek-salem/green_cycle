@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
 import 'package:green_cycle/shared_widgets/primary_button.dart';
@@ -88,7 +87,8 @@ mixin OverlyaysMixin on GetxController {
         ));
   }
 
-  showSuccessDialog(String title, String subtitle, {VoidCallback? onTap}) {
+  Future showSuccessDialog(String title, String subtitle,
+      {VoidCallback? onTap}) {
     final context = Get.context!;
     return showAnimatedDialog(
       context,

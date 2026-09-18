@@ -19,7 +19,7 @@ class SignUpRepo {
     }
   }
 
-  verifyOtp() async {
+  Future<UserResponseModel> verifyOtp() async {
     try {
       final response = await DioClient.privateDio
           .post(AppEndpoints.veifyOtp, data: {'OTPVerified': true});

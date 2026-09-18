@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:green_cycle/shared_widgets/primary_button.dart';
 import 'package:green_cycle/theme/app_images.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
-import 'package:green_cycle/utilities/navigation/app_routes.dart';
 
 class SuccessProcessScreen extends StatelessWidget {
   SuccessProcessScreen({super.key});

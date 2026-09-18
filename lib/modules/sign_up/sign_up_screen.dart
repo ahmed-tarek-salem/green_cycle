@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/modules/sign_up/sign_up_controller.dart';
-import 'package:green_cycle/modules/sign_up/widgets/gender_section.dart';
 import 'package:green_cycle/modules/sign_up/widgets/id_section.dart';
 import 'package:green_cycle/shared_widgets/primary_button.dart';
 import 'package:green_cycle/shared_widgets/primary_text_field.dart';

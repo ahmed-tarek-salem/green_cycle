@@ -67,17 +67,17 @@ class SignUpController extends BaseController {
     }
   }
 
-  keepLogged(String token) {
+  void keepLogged(String token) {
     DioClient.login(token);
     localStorage.setToken(token);
   }
 
-  setGender(Gender gender) {
+  void setGender(Gender gender) {
     this.gender.value = gender;
     update(['gender']);
   }
 
-  openGallery() async {
+  Future<void> openGallery() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
       this.image.value = image;
@@ -85,7 +85,7 @@ class SignUpController extends BaseController {
     }
   }
 
-  checkIfSigned() async {
+  Future<void> checkIfSigned() async {
     final token = localStorage.getToken();
     if (token == null) return;
     if (AuthSession.isJwtExpired(token)) {
@@ -95,7 +95,7 @@ class SignUpController extends BaseController {
       localStorage.clearToken();
       return;
     }
-    await keepLogged(token);
+    keepLogged(token);
     Get.offNamed(AppRoutes.homeLayoutScreen);
   }
 

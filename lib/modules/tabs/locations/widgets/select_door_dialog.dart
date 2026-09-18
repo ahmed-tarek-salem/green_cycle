@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/modules/tabs/locations/locations_controller.dart';
-import 'package:green_cycle/modules/tabs/locations/locations_tab.dart';
 import 'package:green_cycle/modules/tabs/locations/widgets/door_tab.dart';
 import 'package:green_cycle/shared_widgets/primary_button.dart';
 import 'package:green_cycle/theme/app_colors.dart';
@@ -33,7 +32,7 @@ class selectDoorDialog extends StatelessWidget {
     "الطابق السابع",
     "الطابق الثامن",
   ];
-  fun() {
+  void fun() {
     List.generate(
         oldBuildingDoors.length,
         (index) => DoorTab(

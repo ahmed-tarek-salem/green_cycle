@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/main.dart';
@@ -16,7 +15,7 @@ class LoginController extends BaseController {
   final TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  login() async {
+  Future<void> login() async {
     if (!formKey.currentState!.validate()) {
       return;
     }

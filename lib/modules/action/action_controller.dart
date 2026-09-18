@@ -13,7 +13,7 @@ class ActionController extends BaseController {
   final TextEditingController actionDetailsController = TextEditingController();
   XFile? image;
   RxInt imageKeyIndex = 0.obs;
-  submitAction() async {
+  Future<void> submitAction() async {
     if (image == null) {
       showErrorDialog('برجاء رفع الصورة أولاً');
       return;
@@ -46,7 +46,7 @@ class ActionController extends BaseController {
     }
   }
 
-  clearControllers() {
+  void clearControllers() {
     actionDetailsController.clear();
     image = null;
     imageKeyIndex.value++;

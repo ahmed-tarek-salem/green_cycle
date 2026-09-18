@@ -7,8 +7,7 @@ class CustomErrorWidget extends StatelessWidget {
   final String? errorMessage;
   final VoidCallback onRefresh;
   const CustomErrorWidget(
-      {Key? key, this.errorMessage, required this.onRefresh})
-      : super(key: key);
+      {super.key, this.errorMessage, required this.onRefresh});
   @override
   Widget build(BuildContext context) {
     return SizedBox(

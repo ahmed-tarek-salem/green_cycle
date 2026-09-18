@@ -36,7 +36,7 @@ class SurveyController extends BaseController {
     }
   }
 
-  goToSurveyDetails(int index) {
+  void goToSurveyDetails(int index) {
     Get.toNamed(AppRoutes.surveyDetailsScreen, arguments: questions[index]);
   }
 }

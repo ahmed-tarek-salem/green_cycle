@@ -23,7 +23,7 @@ class DioClient {
   static bool isHandlingSessionExpiry = false;
 
   static void login(String token) {
-    privateDio.options.headers['Cookie'] = 'JWT=${token}';
+    privateDio.options.headers['Cookie'] = 'JWT=$token';
     // A fresh, valid token means the session is healthy again.
     isHandlingSessionExpiry = false;
   }

@@ -1,7 +1,3 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
-
 import 'package:green_cycle/models/response_models/question_response_model.dart';
 
 class FaqResponseModel {

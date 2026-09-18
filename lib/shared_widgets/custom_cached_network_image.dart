@@ -14,8 +14,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
       required this.imageUrl,
       this.colorLoading,
       this.fit,
-      Key? key})
-      : super(key: key);
+      super.key});
 
   @override
   Widget build(BuildContext context) {

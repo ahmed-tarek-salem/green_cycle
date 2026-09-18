@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:green_cycle/main.dart';
-import 'package:green_cycle/models/response_models/survey_response_model.dart';
 import 'package:green_cycle/modules/home_layout/widgets/home_app_bar.dart';
 import 'package:green_cycle/modules/survey_details/survey_details_controller.dart';
 import 'package:green_cycle/theme/app_colors.dart';

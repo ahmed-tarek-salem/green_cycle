@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/modules/home_layout/widgets/home_app_bar.dart';
-import 'package:green_cycle/modules/survey_details/survery_details_screen.dart';
 import 'package:green_cycle/modules/surveys/survey_controller.dart';
 import 'package:green_cycle/shared_widgets/custom_error_widget.dart';
 import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';

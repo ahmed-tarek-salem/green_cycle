@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,7 +14,7 @@ import 'package:green_cycle/utilities/storage/local_storage.dart';
 
 var localStorage = Get.put(LocalStorage());
 
-main() {
+void main() {
   /// Global environment switch — flip to [AppEnvironment.dev] to point the
   /// whole app at the staging APIs, or [AppEnvironment.prod] for production.
   appEnvironment = AppEnvironment.prod;
@@ -24,7 +22,7 @@ main() {
 }
 
 /// init app for both flavors
-initApp() async {
+Future<void> initApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioClient.initialize('ar');
   await localStorage.init();
@@ -37,7 +35,7 @@ initApp() async {
 }
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +51,8 @@ class App extends StatelessWidget {
             builder: ((context, child) {
               child = FlutterSmartDialog.init()(context, child);
               child = MediaQuery(
-                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                data: MediaQuery.of(context)
+                    .copyWith(textScaler: TextScaler.linear(1.0)),
                 child: child,
               );
               return child;

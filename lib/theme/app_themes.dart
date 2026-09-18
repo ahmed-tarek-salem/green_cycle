@@ -9,14 +9,13 @@ class AppThemes {
   static var shape =
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(12));
 
-  lightThemeData(String locale) {
+  ThemeData lightThemeData(String locale) {
     return ThemeData(
       scaffoldBackgroundColor: AppColors.white,
       fontFamily:
           locale == 'ar' ? AppConstants.montserratAr : AppConstants.spEn,
       cardColor: AppColors.white,
       primaryColor: AppColors.primary,
-      indicatorColor: AppColors.primary,
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primary,
@@ -57,7 +56,7 @@ class AppThemes {
             )),
       ),
       appBarTheme: const AppBarTheme(
-          color: AppColors.white,
+          backgroundColor: AppColors.white,
           iconTheme: IconThemeData(color: AppColors.white)),
       textTheme: TextTheme(
         titleLarge: TextStyle(
@@ -116,6 +115,7 @@ class AppThemes {
           fontSize: 12.sp,
         ),
       ),
+      tabBarTheme: TabBarThemeData(indicatorColor: AppColors.primary),
     );
   }
 }

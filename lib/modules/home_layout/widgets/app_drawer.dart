@@ -8,7 +8,6 @@ import 'package:green_cycle/shared_widgets/custom_error_widget.dart';
 import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/theme/app_icons.dart';
-import 'package:green_cycle/theme/app_images.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
 

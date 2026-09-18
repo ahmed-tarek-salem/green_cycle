@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:green_cycle/models/response_models/event_response_model.dart';
 import 'package:green_cycle/modules/tabs/events/events_repo.dart';

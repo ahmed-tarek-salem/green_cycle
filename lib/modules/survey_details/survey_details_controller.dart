@@ -48,13 +48,13 @@ class SurveyDetailsController extends BaseController {
   //   }
   // }
 
-  addResponse(int questionIndex, String answer) {
+  void addResponse(int questionIndex, String answer) {
     responses[questionIndex] =
         responses[questionIndex].copyWith(answer: answer);
     update();
   }
 
-  submitSurvey() async {
+  Future<void> submitSurvey() async {
     print(responses);
     if (responses.any((e) => e.answer == null) == true) {
       showErrorDialog('برجاء اختيار الاجابات المطلوبة');

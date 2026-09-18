@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:green_cycle/models/response_models/locations_response_model.dart';
 import 'package:green_cycle/modules/tabs/locations/locations_repo.dart';
-import 'package:green_cycle/theme/app_images.dart';
 import 'package:green_cycle/utilities/base/base_controller.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
 import 'package:green_cycle/utilities/network/dio_client.dart';

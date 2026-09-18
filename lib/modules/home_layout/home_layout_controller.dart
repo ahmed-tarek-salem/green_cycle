@@ -45,7 +45,7 @@ class HomeLayoutController extends BaseController {
     update();
   }
 
-  logout() {
+  void logout() {
     navBarIndex = 0;
     DioClient.logout();
     localStorage.clearToken();

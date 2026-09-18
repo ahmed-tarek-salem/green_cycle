@@ -18,8 +18,8 @@ class PrimaryButton extends StatelessWidget {
     this.isLoading,
     required this.onTap,
     required this.text,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,9 @@ class PrimaryButton extends StatelessWidget {
       height: 46.h,
       child: ElevatedButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(
+            backgroundColor: WidgetStateProperty.all<Color>(
                 backgroundColor ?? AppColors.primary),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.sp),
                     side:

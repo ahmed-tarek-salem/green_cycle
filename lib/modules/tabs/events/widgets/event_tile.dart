@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:green_cycle/main.dart';
 import 'package:green_cycle/models/response_models/event_response_model.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
