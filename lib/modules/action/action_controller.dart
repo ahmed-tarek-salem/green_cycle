@@ -25,7 +25,6 @@ class ActionController extends BaseController {
           type: 'action',
           summary: actionDetailsController.text,
           details: actionDetailsController.text,
-          points: 20,
           image: image == null
               ? null
               : dio.MultipartFile.fromFileSync(image!.path));

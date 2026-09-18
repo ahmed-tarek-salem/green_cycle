@@ -30,7 +30,6 @@ class ComplaintsController extends BaseController {
           type: 'suggestion',
           summary: complaintTitleController.text,
           details: complaintDetailsController.text,
-          points: 20,
           image: image == null
               ? null
               : dio.MultipartFile.fromFileSync(image!.path));
