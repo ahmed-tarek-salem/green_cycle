@@ -78,7 +78,14 @@ class SignUpController extends BaseController {
   }
 
   Future<void> openGallery() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    // Compress the karnéh image so the sign-up upload stays under the server's
+    // body-size limit (nginx returns 413 otherwise). Quality/width are kept high
+    // enough for the ID card to stay legible for admin verification.
+    final image = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+      imageQuality: 70,
+      maxWidth: 1280,
+    );
     if (image != null) {
       this.image.value = image;
       update();

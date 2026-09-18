@@ -21,7 +21,13 @@ class ImagePickerWidget extends StatefulWidget {
 class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   XFile? image;
   Future<void> openCamera() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    // Compress the capture so uploads (activities / complaints) stay under the
+    // server's body-size limit (nginx returns 413 for large images).
+    final image = await ImagePicker().pickImage(
+      source: ImageSource.camera,
+      imageQuality: 70,
+      maxWidth: 1280,
+    );
     if (image != null) {
       setState(() {
         this.image = image;
