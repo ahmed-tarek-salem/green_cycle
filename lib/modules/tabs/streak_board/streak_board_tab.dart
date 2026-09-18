@@ -10,6 +10,7 @@ import 'package:green_cycle/shared_widgets/custom_error_widget.dart';
 import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
+import 'package:green_cycle/utilities/navigation/app_routes.dart';
 
 class StreakBoardTab extends GetView<StreakBoardController> {
   const StreakBoardTab({super.key});
@@ -73,8 +74,7 @@ class StreakBoardTab extends GetView<StreakBoardController> {
         children: [
           Text(
             'لوحة المتصدرين',
-            style:
-                Get.textTheme.headlineSmall!.copyWith(color: Colors.white),
+            style: Get.textTheme.headlineSmall!.copyWith(color: Colors.white),
           ),
           SizedBox(height: 4.h),
           Text(
@@ -155,51 +155,48 @@ class StreakBoardTab extends GetView<StreakBoardController> {
   }
 
   Widget _buildTipsCard() {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(
-          horizontal: AppConstants.horizontalPadding, vertical: 16.h),
-      decoration: BoxDecoration(
-        color: AppColors.secondary,
-        borderRadius: BorderRadius.circular(AppConstants.borderRadius),
-      ),
-      child: Column(
-        children: [
-          Text(
-            'كيف تزيد نقاطك؟',
-            style: Get.textTheme.headlineMedium,
-          ),
-          SizedBox(height: 10.h),
-          _buildTipRow('قم بتسليم المواد القابلة لإعادة التدوير في صناديق الكلية'),
-          SizedBox(height: 8.h),
-          _buildTipRow('شارك في الفعاليات البيئية داخل حرم الكلية'),
-          SizedBox(height: 8.h),
-          _buildTipRow('أكمل الاستبيانات المتاحة'),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTipRow(String text) {
-    return Row(
-      children: [
-        Icon(
-          Icons.check_circle_outline,
-          color: AppColors.primary,
-          size: 18.sp,
+    return InkWell(
+      onTap: () => Get.toNamed(AppRoutes.faqScreen),
+      borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(
+            horizontal: AppConstants.horizontalPadding, vertical: 16.h),
+        decoration: BoxDecoration(
+          color: AppColors.secondary,
+          borderRadius: BorderRadius.circular(AppConstants.borderRadius),
         ),
-        SizedBox(width: 8.w),
-        Expanded(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w400,
-              color: AppColors.primary,
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'كيف تزيد نقاطك؟',
+                    style: Get.textTheme.headlineMedium,
+                  ),
+                  SizedBox(height: 6.h),
+                  Text(
+                    'اعرف كل الأنشطة ونقاطها من الأسئلة الشائعة',
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+            SizedBox(width: 8.w),
+            Icon(
+              Icons.arrow_back_ios,
+              color: AppColors.primary,
+              size: 16.sp,
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

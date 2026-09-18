@@ -31,7 +31,7 @@ class ActionController extends BaseController {
       await _repo.submitAction(activityRequestModel);
 
       showSuccessDialog('تم إرسال مشاركتك بنجاح',
-          'نشكرك على تفاعلك معنا، بمجرد قبول مشاركتك سوف تحصل على ٥ نقاط خضراء جديدة!',
+          'نشكرك على تفاعلك معنا، بمجرد قبول مشاركتك سوف تحصل على نقاطك الخضراء!',
           onTap: () {
         Get.back();
         Get.back();
