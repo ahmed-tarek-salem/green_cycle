@@ -5,10 +5,10 @@
 /// every endpoint in `AppEndpoints` derives its base URL from here.
 enum AppEnvironment {
   /// Production backend.
-  prod('https://green-cycle-juiq.onrender.com/api/v1/'),
+  prod('https://greencycle.cloud/api/v1/'),
 
   /// Staging / dev backend.
-  dev('http://98.92.252.75/api/v1/');
+  dev('https://greencycle.cloud/api/v1/');
 
   const AppEnvironment(this.baseUrl);
 
