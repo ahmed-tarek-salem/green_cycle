@@ -111,10 +111,6 @@ class AppDrawer extends StatelessWidget {
                     },
                     title: 'استطلاعات الرأي',
                   ),
-                  // DrawerTile(
-                  //   onTap: () {},
-                  //   title: 'استبدل نقاطك الخضراء',
-                  // ),
                   const Spacer(),
                   DrawerTile(
                     onTap: controller.logout,
