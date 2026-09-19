@@ -17,6 +17,7 @@ class AppEndpoints {
   static String get surveyResponse => '${baseUrl}responses/response';
   static String get leaderboard => '${baseUrl}users/leaderboard';
   static String get leaderboardMe => '${baseUrl}users/leaderboard/me';
+  static String get appSettings => '${baseUrl}app-settings';
   static String get carpoolDistricts => '${baseUrl}carpool/districts';
   static String get carpoolDays => '${baseUrl}carpool/days';
   static String get carpoolOfferMe => '${baseUrl}carpool/offers/me';

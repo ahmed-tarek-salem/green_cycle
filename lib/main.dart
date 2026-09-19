@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
+import 'package:green_cycle/modules/app_update/app_update_controller.dart';
+import 'package:green_cycle/modules/app_update/app_update_listener.dart';
 import 'package:green_cycle/theme/app_themes.dart';
 import 'package:green_cycle/utilities/global/app_environment.dart';
 import 'package:green_cycle/utilities/navigation/app_pages.dart';
@@ -26,6 +28,9 @@ Future<void> initApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioClient.initialize('ar');
   await localStorage.init();
+  // Starts the version check in the background, the launch flow never waits
+  // for it. `AppUpdateListener` reacts whenever the answer arrives.
+  Get.put(AppUpdateController(), permanent: true);
   // Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
@@ -55,7 +60,7 @@ class App extends StatelessWidget {
                     .copyWith(textScaler: TextScaler.linear(1.0)),
                 child: child,
               );
-              return child;
+              return AppUpdateListener(child: child);
             }),
 
             supportedLocales: const [Locale('ar')],

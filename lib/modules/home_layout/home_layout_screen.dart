@@ -11,7 +11,6 @@ import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/theme/app_icons.dart';
 import 'package:green_cycle/utilities/navigation/app_routes.dart';
-import 'package:upgrader/upgrader.dart';
 
 class HomeLayoutScreen extends GetView<HomeLayoutController> {
   const HomeLayoutScreen({super.key});
@@ -21,65 +20,57 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
     return GetBuilder(
         init: controller,
         builder: (context) {
-          return UpgradeAlert(
-            upgrader: Upgrader(
-                // showIgnore: false,
-                // showLater: false,
-                languageCode: 'ar',
-                // showReleaseNotes: false,
-                durationUntilAlertAgain: const Duration(minutes: 10)),
-            child: Scaffold(
-              drawer: AppDrawer(controller: controller),
-              resizeToAvoidBottomInset: false,
-              appBar: returnHomeAppBar(
-                  controller.titles[controller.getNavBarIndex]),
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.startFloat,
-              floatingActionButton: GetBuilder(
+          return Scaffold(
+            drawer: AppDrawer(controller: controller),
+            resizeToAvoidBottomInset: false,
+            appBar:
+                returnHomeAppBar(controller.titles[controller.getNavBarIndex]),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.startFloat,
+            floatingActionButton: GetBuilder(
+              init: controller,
+              builder: (_) {
+                if (controller.isLoading ||
+                    controller.isError ||
+                    controller.user.isAbleToUploadActivity != true) {
+                  return const SizedBox();
+                }
+                return FloatingActionButton(
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.actionScreen);
+                  },
+                  backgroundColor: AppColors.primary,
+                  child: Icon(
+                    Icons.add,
+                    size: 30.sp,
+                    color: AppColors.white,
+                  ),
+                );
+              },
+            ),
+            body: GetBuilder(
                 init: controller,
                 builder: (_) {
-                  if (controller.isLoading ||
-                      controller.isError ||
-                      controller.user.isAbleToUploadActivity != true) {
-                    return const SizedBox();
+                  if (controller.isLoading) {
+                    return const CustomProgressIndicator();
+                  } else if (controller.isError) {
+                    return CustomErrorWidget(onRefresh: controller.getUser);
                   }
-                  return FloatingActionButton(
-                    onPressed: () {
-                      Get.toNamed(AppRoutes.actionScreen);
-                    },
-                    backgroundColor: AppColors.primary,
-                    child: Icon(
-                      Icons.add,
-                      size: 30.sp,
-                      color: AppColors.white,
-                    ),
-                  );
-                },
-              ),
-              body: GetBuilder(
-                  init: controller,
-                  builder: (_) {
-                    if (controller.isLoading) {
-                      return const CustomProgressIndicator();
-                    } else if (controller.isError) {
-                      return CustomErrorWidget(onRefresh: controller.getUser);
-                    }
-                    return controller.tabs[controller.getNavBarIndex];
-                  }),
-              bottomNavigationBar: CurvedNavigationBar(
-                items: [
-                  SvgPicture.asset(AppIcons.home),
-                  SvgPicture.asset(AppIcons.location),
-                  SvgPicture.asset(AppIcons.calendar),
-                  SvgPicture.asset(AppIcons.pin),
-                  SvgPicture.asset(AppIcons.trophy),
-                ],
-                onTap: (val) {
-                  controller.navBarIndex = val;
-                },
-                color: AppColors.primary,
-                backgroundColor: Colors.transparent,
-              ),
+                  return controller.tabs[controller.getNavBarIndex];
+                }),
+            bottomNavigationBar: CurvedNavigationBar(
+              items: [
+                SvgPicture.asset(AppIcons.home),
+                SvgPicture.asset(AppIcons.location),
+                SvgPicture.asset(AppIcons.calendar),
+                SvgPicture.asset(AppIcons.pin),
+                SvgPicture.asset(AppIcons.trophy),
+              ],
+              onTap: (val) {
+                controller.navBarIndex = val;
+              },
+              color: AppColors.primary,
+              backgroundColor: Colors.transparent,
             ),
           );
         });
