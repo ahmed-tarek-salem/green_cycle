@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:green_cycle/models/request_models/survey_request_model.dart';
 import 'package:green_cycle/models/response_models/survey_response_model.dart';
+import 'package:green_cycle/modules/home_layout/home_layout_controller.dart';
 import 'package:green_cycle/modules/survey_details/surver_details_repo.dart';
 import 'package:green_cycle/utilities/base/base_controller.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
@@ -61,11 +62,19 @@ class SurveyDetailsController extends BaseController {
       return;
     }
 
+    // The user is only set once the home screen finished loading it.
+    final home = Get.find<HomeLayoutController>();
+    final studentId = home.isLoading || home.isError ? null : home.user.id;
+    if (studentId == null) {
+      showErrorDialog(AppConstants.error);
+      return;
+    }
+
     try {
       showLoadingOverlay();
       final surveyRequestModel = SurveyRequestModel(
           questionnaireId: survey.id!,
-          studentId: "653e46e51dedbd286c972126",
+          studentId: studentId,
           responses: responses);
       await _repo.submitSurvey(surveyRequestModel);
       Get.back();
