@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/models/response_models/leaderboard_response_model.dart';
 import 'package:green_cycle/modules/home_layout/home_layout_controller.dart';
+import 'package:green_cycle/modules/tabs/streak_board/rank_texts.dart';
 import 'package:green_cycle/modules/tabs/streak_board/streak_board_controller.dart';
 import 'package:green_cycle/modules/tabs/streak_board/widgets/current_user_section.dart';
 import 'package:green_cycle/modules/tabs/streak_board/widgets/top_user_card.dart';
@@ -53,7 +54,8 @@ class StreakBoardTab extends GetView<StreakBoardController> {
                 _buildCurrentUser(),
                 SizedBox(height: 20.h),
                 _buildTipsCard(),
-                SizedBox(height: 20.h),
+                // Keeps the last card clear of the floating add button.
+                SizedBox(height: 90.h),
               ],
             ),
           ),
@@ -135,7 +137,7 @@ class StreakBoardTab extends GetView<StreakBoardController> {
   Widget _slot(LeaderboardEntry? entry, {bool isFirst = false}) {
     if (entry == null) return const SizedBox();
     return TopUserCard(
-      rank: entry.rank,
+      rank: podiumRank(controller.topUsers, entry),
       name: entry.name ?? '',
       points: entry.totalPoints,
       isFirst: isFirst,
@@ -146,11 +148,14 @@ class StreakBoardTab extends GetView<StreakBoardController> {
     final rank = controller.currentUserRank.value;
     if (rank == null) return const SizedBox();
     final homeController = Get.find<HomeLayoutController>();
+    final top = controller.topUsers;
     return CurrentUserSection(
       rank: rank.rank,
       name: homeController.user.name ?? 'أنت',
       points: rank.totalPoints,
       tiedWith: rank.tiedWith,
+      firstPlacePoints: top.isNotEmpty ? top.first.totalPoints : null,
+      thirdPlacePoints: top.length >= 3 ? top[2].totalPoints : null,
     );
   }
 

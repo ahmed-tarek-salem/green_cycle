@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
+import 'package:green_cycle/utilities/global/points_label.dart';
 
 class TopUserCard extends StatelessWidget {
   final int rank;
@@ -69,7 +70,7 @@ class TopUserCard extends StatelessWidget {
           ),
           SizedBox(height: 4.h),
           Text(
-            '$points نقطة',
+            pointsLabel(points),
             style: TextStyle(
               fontSize: 11.sp,
               fontWeight: FontWeight.w400,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:green_cycle/modules/tabs/streak_board/rank_texts.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
+import 'package:green_cycle/utilities/global/points_label.dart';
 
 class CurrentUserSection extends StatelessWidget {
   final int rank;
@@ -9,20 +11,30 @@ class CurrentUserSection extends StatelessWidget {
   final int points;
   final int tiedWith;
 
+  /// Scores of the first and third students in the loaded top 3, used to
+  /// tell the student how far the next goal is.
+  final int? firstPlacePoints;
+  final int? thirdPlacePoints;
+
   const CurrentUserSection({
     required this.rank,
     required this.name,
     required this.points,
     this.tiedWith = 0,
+    this.firstPlacePoints,
+    this.thirdPlacePoints,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final hasTies = tiedWith > 1;
-    final message = hasTies
-        ? 'تتشارك المركز مع ${tiedWith - 1} ${tiedWith - 1 == 1 ? 'مستخدم آخر' : 'مستخدمين آخرين'}. اجمع المزيد من النقاط للتقدم في الترتيب!'
-        : 'أنت على بعد خطوات قليلة من المراكز الأولى! اجمع المزيد من النقاط للحصول على مكافآت حصرية';
+    final message = rankMessage(
+      rank: rank,
+      tiedWith: tiedWith,
+      points: points,
+      firstPlacePoints: firstPlacePoints,
+      thirdPlacePoints: thirdPlacePoints,
+    );
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(
@@ -69,7 +81,7 @@ class CurrentUserSection extends StatelessWidget {
                     ),
                     SizedBox(height: 2.h),
                     Text(
-                      '$points نقطة',
+                      pointsLabel(points),
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
