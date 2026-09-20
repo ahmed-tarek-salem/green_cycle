@@ -9,6 +9,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart' as dio;
 
 class ActionController extends BaseController {
+  /// Catalog slug for recycling drop-offs, the only activity this screen
+  /// submits until it gets an activity picker.
+  static const _recycleDropoffSlug = 'recycle-dropoff';
+
   final _repo = ActionRepo();
   final TextEditingController actionDetailsController = TextEditingController();
   XFile? image;
@@ -25,6 +29,7 @@ class ActionController extends BaseController {
           type: 'action',
           summary: actionDetailsController.text,
           details: actionDetailsController.text,
+          rewardActionSlug: _recycleDropoffSlug,
           image: image == null
               ? null
               : dio.MultipartFile.fromFileSync(image!.path));

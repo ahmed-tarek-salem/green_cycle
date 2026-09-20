@@ -6,11 +6,16 @@ class ActivityRequestModel {
   final String details;
   final MultipartFile? image;
 
+  /// Rewards catalog slug. When set, the server takes the points and the
+  /// cooldown from the catalog. Complaints leave it null.
+  final String? rewardActionSlug;
+
   ActivityRequestModel(
       {required this.type,
       required this.summary,
       required this.details,
-      required this.image});
+      required this.image,
+      this.rewardActionSlug});
 
   Map<String, dynamic> toMap() {
     return {
@@ -18,6 +23,7 @@ class ActivityRequestModel {
       "summary": summary,
       "details": details,
       "images": image,
+      if (rewardActionSlug != null) 'rewardActionSlug': rewardActionSlug,
     };
   }
 }
