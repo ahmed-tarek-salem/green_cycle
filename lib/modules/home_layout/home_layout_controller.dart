@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/main.dart';
+import 'package:green_cycle/models/response_models/my_rewards_response_model.dart';
 import 'package:green_cycle/models/response_models/user_response_model.dart';
 import 'package:green_cycle/modules/home_layout/home_lauout_repo.dart';
 import 'package:green_cycle/modules/tabs/complaints/complaints_tab.dart';
@@ -17,6 +18,9 @@ class HomeLayoutController extends BaseController {
   final RxInt _navBarIndex = 0.obs;
   final _repo = HomeLayoutRepo();
   late final UserData user;
+
+  /// Level progress for the home card. Stays null if it fails to load.
+  final Rxn<MyRewardsResponseModel> rewards = Rxn();
 
   @override
   void onInit() {
@@ -59,6 +63,7 @@ class HomeLayoutController extends BaseController {
       user = userResponseModel.data;
       setError = false;
       update();
+      loadRewards();
     } catch (e) {
       setError = true;
       final exceptionMessage =
@@ -66,6 +71,16 @@ class HomeLayoutController extends BaseController {
       showErrorDialog(exceptionMessage);
     } finally {
       setLoading = false;
+    }
+  }
+
+  Future<void> loadRewards() async {
+    try {
+      rewards.value = await _repo.getMyRewards();
+      update();
+    } catch (e) {
+      // The level card is optional, so a failure just keeps it hidden.
+      debugPrint('Could not load rewards progress: $e');
     }
   }
 }
