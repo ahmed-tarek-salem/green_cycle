@@ -7,7 +7,6 @@ class SurveyRepo {
   Future<List<SurveyResponseModel>> getSurveys() async {
     try {
       final response = await DioClient.privateDio.get(AppEndpoints.surveys);
-      print(response.data);
       return List.from(
           response.data["data"].map((x) => SurveyResponseModel.fromJson(x)));
     } on DioException catch (e) {

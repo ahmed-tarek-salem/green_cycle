@@ -7,6 +7,7 @@ import 'package:green_cycle/shared_widgets/custom_error_widget.dart';
 import 'package:green_cycle/shared_widgets/custom_progress_indicator.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
+import 'package:green_cycle/utilities/global/points_label.dart';
 
 class SurveysScreen extends GetView<SurveyController> {
   const SurveysScreen({super.key});
@@ -25,7 +26,19 @@ class SurveysScreen extends GetView<SurveyController> {
                 controller.getSurveys();
               });
             }
-            return ListView.builder(
+            if (controller.questions.isEmpty) {
+              return Center(
+                child: Text(
+                  'لا توجد استطلاعات حالياً',
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.primary,
+                  ),
+                ),
+              );
+            }
+            return ListView.separated(
               padding: EdgeInsets.symmetric(
                   horizontal: AppConstants.horizontalPadding,
                   vertical: AppConstants.topPadding),
@@ -45,14 +58,35 @@ class SurveysScreen extends GetView<SurveyController> {
                     padding: EdgeInsets.symmetric(
                         horizontal: AppConstants.horizontalPadding,
                         vertical: AppConstants.topPadding),
-                    child: Text(
-                      survey.title ?? "-",
-                      style:
-                          Get.textTheme.titleMedium!.copyWith(fontSize: 18.sp),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          survey.title ?? "-",
+                          style: Get.textTheme.titleMedium!
+                              .copyWith(fontSize: 18.sp),
+                        ),
+                        if (survey.answeredByMe || survey.rewardPoints > 0) ...[
+                          SizedBox(height: 6.h),
+                          Text(
+                            survey.answeredByMe
+                                ? '✓ تمت الإجابة'
+                                : 'أجب واحصل على ${pointsLabel(survey.rewardPoints)}',
+                            style: TextStyle(
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w600,
+                              color: survey.answeredByMe
+                                  ? AppColors.grey5B
+                                  : AppColors.primary,
+                            ),
+                          ),
+                        ],
+                      ],
                     ),
                   ),
                 );
               },
+              separatorBuilder: (_, __) => SizedBox(height: 10.h),
               itemCount: controller.questions.length,
             );
           }),

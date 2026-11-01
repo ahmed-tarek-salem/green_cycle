@@ -8,6 +8,13 @@ class SurveyResponseModel {
   final DateTime? updatedAt;
   final int v;
 
+  /// Whether the signed-in student already answered it. The server takes
+  /// one answer per student.
+  final bool answeredByMe;
+
+  /// Points the student gets once for answering. Zero means none.
+  final int rewardPoints;
+
   SurveyResponseModel({
     required this.id,
     required this.adminId,
@@ -17,10 +24,27 @@ class SurveyResponseModel {
     required this.createdAt,
     required this.updatedAt,
     required this.v,
+    this.answeredByMe = false,
+    this.rewardPoints = 0,
   });
+
+  SurveyResponseModel markAnswered() => SurveyResponseModel(
+        id: id,
+        adminId: adminId,
+        title: title,
+        description: description,
+        questions: questions,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+        v: v,
+        answeredByMe: true,
+        rewardPoints: rewardPoints,
+      );
 
   factory SurveyResponseModel.fromJson(Map<String, dynamic> json) =>
       SurveyResponseModel(
+        answeredByMe: json["answeredByMe"] == true,
+        rewardPoints: (json["rewardPoints"] as num?)?.toInt() ?? 0,
         id: json["_id"],
         adminId: json["adminId"],
         title: json["title"],
@@ -35,6 +59,16 @@ class SurveyResponseModel {
             : DateTime.parse(json["updatedAt"]),
         v: json["__v"],
       );
+}
+
+/// Turns the server's survey submit errors into Arabic by their `code`.
+/// Anything it does not recognise is returned as is.
+String surveySubmitErrorMessage(String serverMessage, {String? code}) {
+  switch (code) {
+    case 'ALREADY_ANSWERED':
+      return 'أجبت على هذا الاستطلاع من قبل.';
+  }
+  return serverMessage;
 }
 
 class Question {

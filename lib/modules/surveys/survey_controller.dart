@@ -37,6 +37,18 @@ class SurveyController extends BaseController {
   }
 
   void goToSurveyDetails(int index) {
-    Get.toNamed(AppRoutes.surveyDetailsScreen, arguments: questions[index]);
+    final survey = questions[index];
+    if (survey.answeredByMe) {
+      showErrorDialog('أجبت على هذا الاستطلاع من قبل.');
+      return;
+    }
+    Get.toNamed(AppRoutes.surveyDetailsScreen, arguments: survey);
+  }
+
+  void markAnswered(String? surveyId) {
+    final index = questions.indexWhere((s) => s.id == surveyId);
+    if (index == -1) return;
+    questions[index] = questions[index].markAnswered();
+    update();
   }
 }
