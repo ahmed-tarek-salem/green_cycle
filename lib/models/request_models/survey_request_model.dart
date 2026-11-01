@@ -1,5 +1,10 @@
 class SurveyRequestModel {
   final String questionnaireId;
+
+  // TODO: drop studentId once the backend takes the student from the token
+  // (Trello "P1 · الإجابة على الاستطلاع باسم طالب تاني",
+  // https://trello.com/c/5DimQIAa). Then remove it here, in toJson, and the
+  // lookup in SurveyDetailsController.submitSurvey.
   final String studentId;
   final List<QuestionResponse> responses;
 

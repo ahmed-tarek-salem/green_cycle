@@ -74,6 +74,8 @@ class SurveyDetailsController extends BaseController {
     }
 
     // The user is only set once the home screen finished loading it.
+    // TODO: remove this lookup with SurveyRequestModel.studentId once the
+    // backend reads the student from the token (https://trello.com/c/5DimQIAa).
     final home = Get.find<HomeLayoutController>();
     final studentId = home.isLoading || home.isError ? null : home.user.id;
     if (studentId == null) {
