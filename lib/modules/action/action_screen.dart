@@ -48,6 +48,7 @@ class ActionScreen extends GetView<ActionController> {
     if (selected == null) {
       return ActivityPickerList(
         actions: controller.actions,
+        pendingSlugs: controller.pendingSlugs,
         onSelected: controller.selectAction,
       );
     }

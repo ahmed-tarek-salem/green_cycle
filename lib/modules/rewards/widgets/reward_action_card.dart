@@ -12,7 +12,16 @@ class RewardActionCard extends StatelessWidget {
   /// When set, the card is a choice: it shows a chevron and reacts to taps.
   final VoidCallback? onTap;
 
-  const RewardActionCard({required this.action, this.onTap, super.key});
+  /// A short note about the student's own state, like a request under
+  /// review. The card is dimmed while it shows.
+  final String? statusText;
+
+  const RewardActionCard({
+    required this.action,
+    this.onTap,
+    this.statusText,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +84,27 @@ class RewardActionCard extends StatelessWidget {
                   SizedBox(height: 2.h),
                   Text(cooldown, style: detailStyle),
                 ],
+                if (statusText != null) ...[
+                  SizedBox(height: 8.h),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.hourglass_top,
+                        color: AppColors.primary,
+                        size: 14.sp,
+                      ),
+                      SizedBox(width: 4.w),
+                      Text(
+                        statusText!,
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.primary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ],
             ),
           ),
@@ -86,6 +116,7 @@ class RewardActionCard extends StatelessWidget {
       ),
     );
 
+    if (statusText != null) return Opacity(opacity: 0.6, child: card);
     if (onTap == null) return card;
     return InkWell(
       onTap: onTap,

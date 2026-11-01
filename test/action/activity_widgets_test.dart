@@ -52,6 +52,29 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('picker locks an activity that has a pending request', (
+    tester,
+  ) async {
+    RewardAction? picked;
+    await pumpOnSmallPhone(
+      tester,
+      ActivityPickerList(
+        actions: catalog.actions,
+        pendingSlugs: const {'recycle-dropoff'},
+        onSelected: (action) => picked = action,
+      ),
+    );
+
+    expect(find.text('طلبك قيد المراجعة'), findsOneWidget);
+
+    await tester.tap(find.text(recycle.nameAr));
+    expect(picked, isNull);
+
+    await tester.tap(find.text(social.nameAr));
+    expect(picked?.slug, 'social-awareness');
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('picker explains an empty catalog', (tester) async {
     await pumpOnSmallPhone(
       tester,

@@ -11,20 +11,32 @@ class MyRewardsResponseModel {
   final RewardLevel? nextLevel;
   final int pointsToNextLevel;
 
+  /// Slugs of the activities the student already has a request under review
+  /// for. The server refuses a second one until the first is reviewed.
+  final Set<String> pendingSlugs;
+
   const MyRewardsResponseModel({
     required this.totalPoints,
     required this.level,
     required this.nextLevel,
     required this.pointsToNextLevel,
+    this.pendingSlugs = const {},
   });
 
   factory MyRewardsResponseModel.fromMap(Map<String, dynamic> map) {
     final data = map['data'] as Map<String, dynamic>? ?? const {};
+    final actions = data['actions'];
     return MyRewardsResponseModel(
       totalPoints: _toInt(data['totalPoints']),
       level: RewardLevel.maybeFromMap(data['level']),
       nextLevel: RewardLevel.maybeFromMap(data['nextLevel']),
       pointsToNextLevel: _toInt(data['pointsToNextLevel']),
+      pendingSlugs: {
+        if (actions is List)
+          for (final action in actions)
+            if (action is Map && action['hasPending'] == true)
+              '${action['slug']}',
+      },
     );
   }
 

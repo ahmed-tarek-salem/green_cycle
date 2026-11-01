@@ -11,9 +11,14 @@ class ActivityPickerList extends StatelessWidget {
   final List<RewardAction> actions;
   final ValueChanged<RewardAction> onSelected;
 
+  /// Activities with a request still under review. They are shown but can't
+  /// be picked, since the server refuses a second request for them.
+  final Set<String> pendingSlugs;
+
   const ActivityPickerList({
     required this.actions,
     required this.onSelected,
+    this.pendingSlugs = const {},
     super.key,
   });
 
@@ -47,6 +52,12 @@ class ActivityPickerList extends StatelessWidget {
           );
         }
         final action = actions[index - 1];
+        if (pendingSlugs.contains(action.slug)) {
+          return RewardActionCard(
+            action: action,
+            statusText: 'طلبك قيد المراجعة',
+          );
+        }
         return RewardActionCard(
           action: action,
           onTap: () => onSelected(action),

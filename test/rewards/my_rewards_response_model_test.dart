@@ -22,6 +22,29 @@ Map<String, dynamic> levelJson({
     };
 
 void main() {
+  group('MyRewardsResponseModel pending activities', () {
+    test('collects the slugs the student has a pending request for', () {
+      final model = MyRewardsResponseModel.fromMap({
+        'data': {
+          'totalPoints': 0,
+          'actions': [
+            {'slug': 'plant-tree', 'hasPending': true},
+            {'slug': 'reusable-bottle', 'hasPending': false},
+            {'slug': 'recycled-art'},
+          ],
+        },
+      });
+      expect(model.pendingSlugs, {'plant-tree'});
+    });
+
+    test('is empty when the server sends no actions', () {
+      final model = MyRewardsResponseModel.fromMap({
+        'data': <String, dynamic>{'totalPoints': 0},
+      });
+      expect(model.pendingSlugs, isEmpty);
+    });
+  });
+
   group('MyRewardsResponseModel.fromMap', () {
     test('reads points, current level and next level', () {
       final model = MyRewardsResponseModel.fromMap({

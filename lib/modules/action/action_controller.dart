@@ -20,6 +20,9 @@ class ActionController extends BaseController {
   final TextEditingController actionDetailsController = TextEditingController();
 
   final RxList<RewardAction> actions = <RewardAction>[].obs;
+
+  /// Activities with a request still under review, locked in the picker.
+  final RxSet<String> pendingSlugs = <String>{}.obs;
   final Rxn<RewardAction> selectedAction = Rxn();
   final RxnString variantKey = RxnString();
   final RxInt units = 1.obs;
@@ -36,7 +39,9 @@ class ActionController extends BaseController {
   Future<void> loadActions() async {
     try {
       setLoading = true;
+      final myRewards = _loadPendingSlugs();
       final catalog = await _rewardsRepo.getCatalog();
+      await myRewards;
       actions.assignAll(catalog.actions.where((a) => a.isStudentSubmittable));
       setError = false;
     } catch (e) {
@@ -47,6 +52,15 @@ class ActionController extends BaseController {
     } finally {
       setLoading = false;
     }
+  }
+
+  /// Best effort: without it every activity stays open, and the server still
+  /// refuses a second pending request with a clear message.
+  Future<void> _loadPendingSlugs() async {
+    try {
+      final myRewards = await _rewardsRepo.getMyRewards();
+      pendingSlugs.assignAll(myRewards.pendingSlugs);
+    } catch (_) {}
   }
 
   void selectAction(RewardAction action) {
@@ -119,6 +133,11 @@ class ActionController extends BaseController {
     } catch (e) {
       if (e is MyCustomException) {
         showErrorDialog(submitErrorMessage(e.message, action, code: e.code));
+        if (e.code == 'PENDING_SAME_ACTION') {
+          // Sent from another device, or the list loaded before it.
+          pendingSlugs.add(action.slug);
+          clearSelection();
+        }
         if (isInactiveActionError(e.message, code: e.code)) {
           // The college switched it off since the list loaded.
           clearSelection();
