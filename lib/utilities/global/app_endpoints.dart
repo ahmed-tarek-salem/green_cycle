@@ -19,6 +19,10 @@ class AppEndpoints {
   static String get surveyResponse => '${baseUrl}responses/response';
   static String get leaderboard => '${baseUrl}users/leaderboard';
   static String get leaderboardMe => '${baseUrl}users/leaderboard/me';
+  static String get myPrompts => '${baseUrl}users/me/prompts';
+  static String promptSeen(String id) => '${baseUrl}users/me/prompts/$id/seen';
+  static String carpoolTripConfirm(String tripId) =>
+      '${baseUrl}carpool/trips/$tripId/confirm';
   static String get rewards => '${baseUrl}rewards';
   static String get rewardsMe => '${baseUrl}rewards/me';
   static String get appSettings => '${baseUrl}app-settings';

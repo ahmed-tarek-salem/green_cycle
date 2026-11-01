@@ -41,8 +41,13 @@ class GreenPointsSection extends GetView<HomeLayoutController> {
               GetBuilder(
                 init: controller,
                 builder: (_) {
+                  // The rewards total is reloaded after a review or a trip
+                  // confirmation, while the user is loaded once.
+                  final points = controller.rewards.value?.totalPoints ??
+                      controller.user.totalPoints ??
+                      0;
                   return Text(
-                    (controller.user.totalPoints ?? 0).toString(),
+                    points.toString(),
                     style: TextStyle(
                       fontSize: 40.sp,
                       fontWeight: FontWeight.w600,

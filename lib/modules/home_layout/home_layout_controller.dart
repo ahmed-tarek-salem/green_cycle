@@ -4,6 +4,7 @@ import 'package:green_cycle/main.dart';
 import 'package:green_cycle/models/response_models/my_rewards_response_model.dart';
 import 'package:green_cycle/models/response_models/user_response_model.dart';
 import 'package:green_cycle/modules/home_layout/home_lauout_repo.dart';
+import 'package:green_cycle/modules/prompts/prompts_controller.dart';
 import 'package:green_cycle/modules/tabs/complaints/complaints_tab.dart';
 import 'package:green_cycle/modules/tabs/events/events_tab.dart';
 import 'package:green_cycle/modules/tabs/home/home_tab.dart';
@@ -64,6 +65,9 @@ class HomeLayoutController extends BaseController {
       setError = false;
       update();
       loadRewards();
+      if (Get.isRegistered<PromptsController>()) {
+        Get.find<PromptsController>().checkPrompts();
+      }
     } catch (e) {
       setError = true;
       final exceptionMessage =
