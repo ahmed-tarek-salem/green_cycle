@@ -30,9 +30,11 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
           floatingActionButton: GetBuilder(
             init: controller,
             builder: (_) {
-              // Always available once the user loads. Each activity has
-              // its own cooldown, which the server enforces on submit.
-              if (controller.isLoading || controller.isError) {
+              // On the home tab only, so it never covers another tab's own
+              // buttons, like "إرسال" on the suggestions tab.
+              if (controller.isLoading ||
+                  controller.isError ||
+                  controller.getNavBarIndex != 0) {
                 return const SizedBox();
               }
               return FloatingActionButton(
