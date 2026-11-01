@@ -56,7 +56,7 @@ class SignUpController extends BaseController {
           Get.offAllNamed(AppRoutes.loginScreen);
         });
       } else {
-        Get.offAndToNamed(AppRoutes.homeLayoutScreen);
+        Get.offAllNamed(AppRoutes.homeLayoutScreen);
       }
     } catch (e) {
       final exceptionMessage =
@@ -103,7 +103,7 @@ class SignUpController extends BaseController {
       return;
     }
     keepLogged(token);
-    Get.offNamed(AppRoutes.homeLayoutScreen);
+    Get.offAllNamed(AppRoutes.homeLayoutScreen);
   }
 
   @override

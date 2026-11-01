@@ -54,7 +54,7 @@ class HomeLayoutController extends BaseController {
     navBarIndex = 0;
     DioClient.logout();
     localStorage.clearToken();
-    Get.offAndToNamed(AppRoutes.loginScreen);
+    Get.offAllNamed(AppRoutes.loginScreen);
   }
 
   Future<void> getUser() async {

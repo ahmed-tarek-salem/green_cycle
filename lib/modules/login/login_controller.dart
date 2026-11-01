@@ -33,7 +33,7 @@ class LoginController extends BaseController {
       } else {
         localStorage.setToken(userResponseModel.token!);
         DioClient.login(userResponseModel.token!);
-        Get.offAndToNamed(AppRoutes.homeLayoutScreen);
+        Get.offAllNamed(AppRoutes.homeLayoutScreen);
       }
     } catch (e) {
       final exceptionMessage =
