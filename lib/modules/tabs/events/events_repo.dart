@@ -11,7 +11,6 @@ class EventsRepo {
     } on DioException catch (e) {
       throw MyCustomException(e.response?.data['message'] ?? e.message);
     } catch (e) {
-      print(e);
       throw MyCustomException(e.toString());
     }
   }

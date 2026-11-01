@@ -78,7 +78,7 @@ mixin OverlyaysMixin on GetxController {
                         horizontal: 30.sp, vertical: 12.sp),
                   ),
                   child: Text(
-                    'ok'.tr,
+                    'حسناً',
                   ),
                 ),
               ],

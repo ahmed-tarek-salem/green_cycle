@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/utilities/global/app_endpoints.dart';
@@ -34,14 +35,18 @@ class DioClient {
 
   static void initialize(String lang) {
     for (var dio in [privateDio, publicDio]) {
-      dio.interceptors.add(
-        LogInterceptor(
-            responseBody: true,
-            requestBody: true,
-            error: true,
-            requestHeader: true,
-            request: true),
-      );
+      // Requests carry the session cookie, so they are only logged in debug
+      // builds and never in a store build.
+      if (kDebugMode) {
+        dio.interceptors.add(
+          LogInterceptor(
+              responseBody: true,
+              requestBody: true,
+              error: true,
+              requestHeader: true,
+              request: true),
+        );
+      }
       dio.interceptors.add(
         InterceptorsWrapper(
           onRequest:

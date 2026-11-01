@@ -26,7 +26,6 @@ class LoginController extends BaseController {
           phone: phoneController.text, password: passwordController.text);
       final UserResponseModel userResponseModel =
           await _repo.login(loginRequestModel);
-      print(userResponseModel.data.id);
       if (userResponseModel.data.isVerified != true) {
         Get.toNamed(AppRoutes.successs, arguments: () {
           Get.back();
