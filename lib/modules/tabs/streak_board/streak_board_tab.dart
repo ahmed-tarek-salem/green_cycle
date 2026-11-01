@@ -32,7 +32,8 @@ class StreakBoardTab extends GetView<StreakBoardController> {
           onRefresh: controller.loadLeaderboard,
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(
-                parent: BouncingScrollPhysics()),
+              parent: BouncingScrollPhysics(),
+            ),
             padding: EdgeInsets.symmetric(
               horizontal: AppConstants.horizontalPadding,
               vertical: AppConstants.topPadding,
@@ -161,12 +162,14 @@ class StreakBoardTab extends GetView<StreakBoardController> {
 
   Widget _buildTipsCard() {
     return InkWell(
-      onTap: () => Get.toNamed(AppRoutes.faqScreen),
+      onTap: () => Get.toNamed(AppRoutes.rewardsScreen),
       borderRadius: BorderRadius.circular(AppConstants.borderRadius),
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(
-            horizontal: AppConstants.horizontalPadding, vertical: 16.h),
+          horizontal: AppConstants.horizontalPadding,
+          vertical: 16.h,
+        ),
         decoration: BoxDecoration(
           color: AppColors.secondary,
           borderRadius: BorderRadius.circular(AppConstants.borderRadius),
@@ -177,13 +180,10 @@ class StreakBoardTab extends GetView<StreakBoardController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'كيف تزيد نقاطك؟',
-                    style: Get.textTheme.headlineMedium,
-                  ),
+                  Text('كيف تزيد نقاطك؟', style: Get.textTheme.headlineMedium),
                   SizedBox(height: 6.h),
                   Text(
-                    'اعرف كل الأنشطة ونقاطها من الأسئلة الشائعة',
+                    'اعرف كل الأنشطة ونقاطها والمستويات والجوائز',
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
@@ -194,11 +194,7 @@ class StreakBoardTab extends GetView<StreakBoardController> {
               ),
             ),
             SizedBox(width: 8.w),
-            Icon(
-              Icons.arrow_back_ios,
-              color: AppColors.primary,
-              size: 16.sp,
-            ),
+            Icon(Icons.arrow_back_ios, color: AppColors.primary, size: 16.sp),
           ],
         ),
       ),

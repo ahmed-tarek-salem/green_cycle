@@ -10,12 +10,21 @@ class ActivityRequestModel {
   /// cooldown from the catalog. Complaints leave it null.
   final String? rewardActionSlug;
 
-  ActivityRequestModel(
-      {required this.type,
-      required this.summary,
-      required this.details,
-      required this.image,
-      this.rewardActionSlug});
+  /// Chosen variant, for activities whose points depend on a variant.
+  final String? variantKey;
+
+  /// Quantity, for activities paid per unit.
+  final int? units;
+
+  ActivityRequestModel({
+    required this.type,
+    required this.summary,
+    required this.details,
+    required this.image,
+    this.rewardActionSlug,
+    this.variantKey,
+    this.units,
+  });
 
   Map<String, dynamic> toMap() {
     return {
@@ -24,6 +33,8 @@ class ActivityRequestModel {
       "details": details,
       "images": image,
       if (rewardActionSlug != null) 'rewardActionSlug': rewardActionSlug,
+      if (variantKey != null) 'variantKey': variantKey,
+      if (units != null) 'units': units,
     };
   }
 }

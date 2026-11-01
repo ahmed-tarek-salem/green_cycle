@@ -101,5 +101,9 @@ class DioClient {
 class MyCustomException implements Exception {
   final String message;
 
-  MyCustomException(this.message);
+  /// The server's stable error code, such as `PENDING_SAME_ACTION`, when the
+  /// response has one.
+  final String? code;
+
+  MyCustomException(this.message, {this.code});
 }

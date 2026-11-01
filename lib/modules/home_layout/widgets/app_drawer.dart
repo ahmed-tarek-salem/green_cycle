@@ -13,10 +13,7 @@ import 'package:green_cycle/utilities/navigation/app_routes.dart';
 
 class AppDrawer extends StatelessWidget {
   final HomeLayoutController controller;
-  const AppDrawer({
-    required this.controller,
-    super.key,
-  });
+  const AppDrawer({required this.controller, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +22,9 @@ class AppDrawer extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.symmetric(
-                vertical: 10.h, horizontal: AppConstants.horizontalPadding),
+              vertical: 10.h,
+              horizontal: AppConstants.horizontalPadding,
+            ),
             height: 80.h,
             width: double.infinity,
             color: AppColors.primary,
@@ -34,17 +33,16 @@ class AppDrawer extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('القائمة',
-                      style: TextStyle(color: Colors.white, fontSize: 24.sp)),
+                  Text(
+                    'القائمة',
+                    style: TextStyle(color: Colors.white, fontSize: 24.sp),
+                  ),
                   GestureDetector(
                     onTap: () {
                       Get.back();
                     },
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.white,
-                    ),
-                  )
+                    child: Icon(Icons.arrow_forward_ios, color: Colors.white),
+                  ),
                 ],
               ),
             ),
@@ -53,46 +51,55 @@ class AppDrawer extends StatelessWidget {
             child: Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(
-                  vertical: AppConstants.topPadding, horizontal: 10.w),
+                vertical: AppConstants.topPadding,
+                horizontal: 10.w,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GetBuilder(
-                      init: controller,
-                      builder: (_) {
-                        if (controller.isLoading) {
-                          return const CustomProgressIndicator();
-                        } else if (controller.isError) {
-                          return CustomErrorWidget(
-                              onRefresh: controller.getUser);
-                        }
-                        return Row(
-                          children: [
-                            SvgPicture.asset(
-                              controller.user.gender == 'male'
-                                  ? AppIcons.male
-                                  : AppIcons.female,
-                              height: 100.sp,
+                    init: controller,
+                    builder: (_) {
+                      if (controller.isLoading) {
+                        return const CustomProgressIndicator();
+                      } else if (controller.isError) {
+                        return CustomErrorWidget(onRefresh: controller.getUser);
+                      }
+                      return Row(
+                        children: [
+                          SvgPicture.asset(
+                            controller.user.gender == 'male'
+                                ? AppIcons.male
+                                : AppIcons.female,
+                            height: 100.sp,
+                          ),
+                          SizedBox(width: 10.w),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  controller.user.name ?? '-',
+                                  style: Get.textTheme.headlineMedium,
+                                ),
+                                SizedBox(height: 10.h),
+                                Text(
+                                  'الرقم التعريفي : ${controller.user.serialId}',
+                                ),
+                              ],
                             ),
-                            SizedBox(width: 10.w),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    controller.user.name ?? '-',
-                                    style: Get.textTheme.headlineMedium,
-                                  ),
-                                  SizedBox(height: 10.h),
-                                  Text(
-                                      'الرقم التعريفي : ${controller.user.serialId}')
-                                ],
-                              ),
-                            )
-                          ],
-                        );
-                      }),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
                   SizedBox(height: 30.h),
+                  DrawerTile(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.rewardsScreen);
+                    },
+                    title: 'المكافآت',
+                  ),
                   DrawerTile(
                     onTap: () {
                       Get.toNamed(AppRoutes.aboutUsScreen);
@@ -120,7 +127,7 @@ class AppDrawer extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

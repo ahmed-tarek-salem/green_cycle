@@ -18,61 +18,59 @@ class HomeLayoutScreen extends GetView<HomeLayoutController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
-        init: controller,
-        builder: (context) {
-          return Scaffold(
-            drawer: AppDrawer(controller: controller),
-            resizeToAvoidBottomInset: false,
-            appBar:
-                returnHomeAppBar(controller.titles[controller.getNavBarIndex]),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.startFloat,
-            floatingActionButton: GetBuilder(
-              init: controller,
-              builder: (_) {
-                if (controller.isLoading ||
-                    controller.isError ||
-                    controller.user.isAbleToUploadActivity != true) {
-                  return const SizedBox();
-                }
-                return FloatingActionButton(
-                  onPressed: () {
-                    Get.toNamed(AppRoutes.actionScreen);
-                  },
-                  backgroundColor: AppColors.primary,
-                  child: Icon(
-                    Icons.add,
-                    size: 30.sp,
-                    color: AppColors.white,
-                  ),
-                );
-              },
-            ),
-            body: GetBuilder(
-                init: controller,
-                builder: (_) {
-                  if (controller.isLoading) {
-                    return const CustomProgressIndicator();
-                  } else if (controller.isError) {
-                    return CustomErrorWidget(onRefresh: controller.getUser);
-                  }
-                  return controller.tabs[controller.getNavBarIndex];
-                }),
-            bottomNavigationBar: CurvedNavigationBar(
-              items: [
-                SvgPicture.asset(AppIcons.home),
-                SvgPicture.asset(AppIcons.location),
-                SvgPicture.asset(AppIcons.calendar),
-                SvgPicture.asset(AppIcons.pin),
-                SvgPicture.asset(AppIcons.trophy),
-              ],
-              onTap: (val) {
-                controller.navBarIndex = val;
-              },
-              color: AppColors.primary,
-              backgroundColor: Colors.transparent,
-            ),
-          );
-        });
+      init: controller,
+      builder: (context) {
+        return Scaffold(
+          drawer: AppDrawer(controller: controller),
+          resizeToAvoidBottomInset: false,
+          appBar: returnHomeAppBar(
+            controller.titles[controller.getNavBarIndex],
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+          floatingActionButton: GetBuilder(
+            init: controller,
+            builder: (_) {
+              // Always available once the user loads. Each activity has
+              // its own cooldown, which the server enforces on submit.
+              if (controller.isLoading || controller.isError) {
+                return const SizedBox();
+              }
+              return FloatingActionButton(
+                onPressed: () {
+                  Get.toNamed(AppRoutes.actionScreen);
+                },
+                backgroundColor: AppColors.primary,
+                child: Icon(Icons.add, size: 30.sp, color: AppColors.white),
+              );
+            },
+          ),
+          body: GetBuilder(
+            init: controller,
+            builder: (_) {
+              if (controller.isLoading) {
+                return const CustomProgressIndicator();
+              } else if (controller.isError) {
+                return CustomErrorWidget(onRefresh: controller.getUser);
+              }
+              return controller.tabs[controller.getNavBarIndex];
+            },
+          ),
+          bottomNavigationBar: CurvedNavigationBar(
+            items: [
+              SvgPicture.asset(AppIcons.home),
+              SvgPicture.asset(AppIcons.location),
+              SvgPicture.asset(AppIcons.calendar),
+              SvgPicture.asset(AppIcons.pin),
+              SvgPicture.asset(AppIcons.trophy),
+            ],
+            onTap: (val) {
+              controller.navBarIndex = val;
+            },
+            color: AppColors.primary,
+            backgroundColor: Colors.transparent,
+          ),
+        );
+      },
+    );
   }
 }

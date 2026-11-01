@@ -44,15 +44,21 @@ class MyRewardsResponseModel {
 }
 
 class RewardLevel {
+  final int order;
   final String titleAr;
   final String emoji;
   final int minPoints;
+
+  /// Null on the last level, which has no upper bound.
+  final int? maxPoints;
   final String rewardAr;
 
   const RewardLevel({
+    this.order = 0,
     required this.titleAr,
     required this.emoji,
     required this.minPoints,
+    this.maxPoints,
     required this.rewardAr,
   });
 
@@ -60,10 +66,13 @@ class RewardLevel {
       value is Map<String, dynamic> ? RewardLevel.fromMap(value) : null;
 
   factory RewardLevel.fromMap(Map<String, dynamic> map) {
+    final maxPoints = map['maxPoints'];
     return RewardLevel(
+      order: _toInt(map['order']),
       titleAr: map['titleAr'] ?? '',
       emoji: map['emoji'] ?? '',
       minPoints: _toInt(map['minPoints']),
+      maxPoints: maxPoints is num ? maxPoints.toInt() : null,
       rewardAr: map['rewardAr'] ?? '',
     );
   }
