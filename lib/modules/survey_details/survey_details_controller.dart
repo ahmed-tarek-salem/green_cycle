@@ -57,6 +57,16 @@ class SurveyDetailsController extends BaseController {
     update();
   }
 
+  /// Written answers. Blank text counts as unanswered, so the "answer every
+  /// question" check still catches it.
+  void setTextResponse(int questionIndex, String text) {
+    final trimmed = text.trim();
+    responses[questionIndex] = QuestionResponse(
+      questionIndex: questionIndex,
+      answer: trimmed.isEmpty ? null : trimmed,
+    );
+  }
+
   Future<void> submitSurvey() async {
     if (responses.any((e) => e.answer == null) == true) {
       showErrorDialog('برجاء اختيار الاجابات المطلوبة');

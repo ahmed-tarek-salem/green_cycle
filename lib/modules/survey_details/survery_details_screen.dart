@@ -51,8 +51,22 @@ class SurveryDetailsScreen extends GetView<SurveyDetailsController> {
                                               controller.addResponse(
                                                   index, value!);
                                             },
-                                            title: Text(e ?? "-"),
-                                          ))
+                                            title: Text(e),
+                                          )),
+                                if (question.questionType ==
+                                    QuestionType.text.name) ...[
+                                  const SizedBox(height: 12),
+                                  TextField(
+                                    minLines: 2,
+                                    maxLines: 5,
+                                    decoration: const InputDecoration(
+                                      hintText: 'اكتب إجابتك',
+                                      border: OutlineInputBorder(),
+                                    ),
+                                    onChanged: (text) => controller
+                                        .setTextResponse(index, text),
+                                  ),
+                                ],
                               ],
                             );
                           })),
