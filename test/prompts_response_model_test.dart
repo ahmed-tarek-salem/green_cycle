@@ -46,7 +46,7 @@ void main() {
     final trip = prompts[0] as CarpoolConfirmPrompt;
     expect(trip.tripId, 't9');
     expect(trip.title, 'هل تمت الرحلة؟');
-    expect(trip.body, 'هل ركبت مع Ahmed يوم 2026-11-02 الساعة 08:00؟');
+    expect(trip.body, 'هل ركبت مع Ahmed يوم الإثنين 2 نوفمبر الساعة 08:00؟');
   });
 
   test('a driver is asked about the passenger the same way', () {
@@ -65,7 +65,24 @@ void main() {
         ],
       },
     }).single as CarpoolConfirmPrompt;
-    expect(trip.body, 'هل ركب معك الراكب يوم 2026-11-02 الساعة 08:00؟');
+    expect(trip.body, 'هل ركب معك الراكب يوم الإثنين 2 نوفمبر الساعة 08:00؟');
+  });
+
+  test('a date it cannot read is kept as is, in its own direction', () {
+    final trip = parsePrompts({
+      'data': {
+        'prompts': [
+          {
+            'id': 't1',
+            'type': 'carpool_confirm',
+            'date': 'bad-date',
+            'time': '08:00',
+            'role': 'passenger',
+          },
+        ],
+      },
+    }).single as CarpoolConfirmPrompt;
+    expect(trip.body, 'هل ركبت مع السائق يوم \u2066bad-date\u2069 الساعة 08:00؟');
   });
 
   test('approved and rejected reviews read in Arabic', () {

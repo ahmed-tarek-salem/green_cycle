@@ -35,7 +35,7 @@ class CarpoolConfirmPrompt extends AppPrompt {
   @override
   String get body {
     final name = otherName?.trim() ?? '';
-    final when = 'يوم $date الساعة $time';
+    final when = 'يوم ${_arabicDate(date)} الساعة $time';
     if (isDriver) {
       return name.isEmpty
           ? 'هل ركب معك الراكب $when؟'
@@ -43,6 +43,40 @@ class CarpoolConfirmPrompt extends AppPrompt {
     }
     return name.isEmpty ? 'هل ركبت مع السائق $when؟' : 'هل ركبت مع $name $when؟';
   }
+}
+
+const _weekdays = [
+  'الإثنين',
+  'الثلاثاء',
+  'الأربعاء',
+  'الخميس',
+  'الجمعة',
+  'السبت',
+  'الأحد',
+];
+
+const _months = [
+  'يناير',
+  'فبراير',
+  'مارس',
+  'أبريل',
+  'مايو',
+  'يونيو',
+  'يوليو',
+  'أغسطس',
+  'سبتمبر',
+  'أكتوبر',
+  'نوفمبر',
+  'ديسمبر',
+];
+
+/// "2026-11-02" as "الإثنين 2 نوفمبر". A raw "yyyy-MM-dd" inside an Arabic
+/// sentence is reordered by the text direction and reads backwards.
+String _arabicDate(String date) {
+  final parsed = DateTime.tryParse(date);
+  // Kept as is, isolated so the surrounding Arabic does not flip it.
+  if (parsed == null) return '\u2066$date\u2069';
+  return '${_weekdays[parsed.weekday - 1]} ${parsed.day} ${_months[parsed.month - 1]}';
 }
 
 /// Shown once after the admin accepts or rejects one of the student's
