@@ -46,13 +46,13 @@ class ComplaintsTab extends GetView<ComplaintsController> {
             ),
             SizedBox(height: 15.h),
             PrimaryTextField(
-              hintText: 'عنوان الشكوى أو الاقتراح',
+              hintText: 'عنوان الملاحظة',
               controller: controller.complaintTitleController,
               validator: FormBuilderValidators.required(),
             ),
             SizedBox(height: 15.h),
             PrimaryTextField(
-              hintText: 'تفاصيل الشكوى أو الاقتراح',
+              hintText: 'اكتب ملاحظتك أو اقتراحك لتطوير التطبيق',
               maxLines: 4,
               controller: controller.complaintDetailsController,
               validator: FormBuilderValidators.required(),
@@ -74,7 +74,7 @@ class ComplaintsTab extends GetView<ComplaintsController> {
                 onTap: () {
                   controller.submitComplaint();
                 },
-                text: 'رفع الشكوى او الاقتراح'),
+                text: 'إرسال'),
             SizedBox(height: 25.h),
           ],
         ),
