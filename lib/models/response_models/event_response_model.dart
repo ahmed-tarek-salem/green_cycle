@@ -31,7 +31,8 @@ class Event {
         name: map['name'],
         description: map['description'],
         details: map['details'],
-        date: DateTime.parse(map['date']),
+        // The server sends UTC. Shown in the student's own time.
+        date: DateTime.tryParse('${map['date']}')?.toLocal(),
         location: map['location']);
   }
 }
