@@ -102,6 +102,12 @@ class AppDrawer extends StatelessWidget {
                   ),
                   DrawerTile(
                     onTap: () {
+                      Get.toNamed(AppRoutes.myActivitiesScreen);
+                    },
+                    title: 'طلباتي',
+                  ),
+                  DrawerTile(
+                    onTap: () {
                       Get.toNamed(AppRoutes.aboutUsScreen);
                     },
                     title: 'من نحن',

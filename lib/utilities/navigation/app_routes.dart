@@ -11,6 +11,7 @@ class AppRoutes {
   static const String aboutUsScreen = "/about-us-screen";
   static const String faqScreen = "/faq-screen";
   static const String rewardsScreen = "/rewards-screen";
+  static const String myActivitiesScreen = "/my-activities-screen";
   static const String actionScreen = "/action-screen";
   static const String surveysScreen = "/surveys-screen";
   static const String surveyDetailsScreen = "/survey-details-screen";

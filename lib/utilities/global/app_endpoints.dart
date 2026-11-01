@@ -14,6 +14,7 @@ class AppEndpoints {
   static String get events => '${baseUrl}events';
   static String get activities => '${baseUrl}activities';
   static String get feedback => '${baseUrl}feedback';
+  static String get myActivities => '${baseUrl}activities/me';
   static String get surveys => '${baseUrl}questionnaires';
   static String get surveyResponse => '${baseUrl}responses/response';
   static String get leaderboard => '${baseUrl}users/leaderboard';

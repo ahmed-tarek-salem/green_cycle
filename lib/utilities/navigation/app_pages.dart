@@ -16,6 +16,8 @@ import 'package:green_cycle/modules/login/login_bindings.dart';
 import 'package:green_cycle/modules/login/login_screen.dart';
 import 'package:green_cycle/modules/rewards/rewards_bindings.dart';
 import 'package:green_cycle/modules/rewards/rewards_screen.dart';
+import 'package:green_cycle/modules/my_activities/my_activities_bindings.dart';
+import 'package:green_cycle/modules/my_activities/my_activities_screen.dart';
 import 'package:green_cycle/modules/sign_up/sign_up_bindigns.dart';
 import 'package:green_cycle/modules/sign_up/sign_up_screen.dart';
 import 'package:green_cycle/modules/sign_up/success_process.dart';
@@ -58,6 +60,11 @@ class AppPages {
       name: AppRoutes.rewardsScreen,
       page: () => const RewardsScreen(),
       binding: RewardsBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.myActivitiesScreen,
+      page: () => const MyActivitiesScreen(),
+      binding: MyActivitiesBindings(),
     ),
     GetPage(
       name: AppRoutes.actionScreen,
