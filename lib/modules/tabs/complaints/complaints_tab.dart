@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
+import 'package:green_cycle/models/request_models/feedback_request_model.dart';
 import 'package:green_cycle/modules/tabs/complaints/complaints_controller.dart';
 import 'package:green_cycle/shared_widgets/image_picker_widget.dart';
 import 'package:green_cycle/shared_widgets/primary_button.dart';
@@ -42,6 +43,30 @@ class ComplaintsTab extends GetView<ComplaintsController> {
                         TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w300),
                   ),
                 ),
+              ),
+            ),
+            SizedBox(height: 15.h),
+            Text(
+              'الملاحظة عن',
+              style: TextStyle(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.primary,
+              ),
+            ),
+            SizedBox(height: 8.h),
+            Obx(
+              () => Wrap(
+                spacing: 8.w,
+                children: [
+                  for (final type in FeedbackType.values)
+                    ChoiceChip(
+                      label: Text(type.labelAr),
+                      selected: controller.type.value == type,
+                      selectedColor: AppColors.secondary,
+                      onSelected: (_) => controller.type.value = type,
+                    ),
+                ],
               ),
             ),
             SizedBox(height: 15.h),
