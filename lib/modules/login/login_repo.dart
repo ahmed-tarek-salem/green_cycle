@@ -11,7 +11,11 @@ class LoginRepo {
           .post(AppEndpoints.login, data: loginRequestModel.toMap());
       return UserResponseModel.fromMap(response.data);
     } on DioException catch (e) {
-      throw MyCustomException(e.response?.data['message'] ?? e.message);
+      final body = e.response?.data;
+      throw MyCustomException(
+        (body is Map ? body['message'] : null) ?? e.message ?? '',
+        code: body is Map ? body['code'] as String? : null,
+      );
     } catch (e) {
       throw MyCustomException(e.toString());
     }

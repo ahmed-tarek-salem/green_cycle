@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:green_cycle/main.dart';
 import 'package:green_cycle/models/request_models/login_request_model.dart';
 import 'package:green_cycle/models/response_models/user_response_model.dart';
+import 'package:green_cycle/modules/login/login_errors.dart';
 import 'package:green_cycle/modules/login/login_repo.dart';
 import 'package:green_cycle/utilities/base/base_controller.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
@@ -36,8 +37,9 @@ class LoginController extends BaseController {
         Get.offAllNamed(AppRoutes.homeLayoutScreen);
       }
     } catch (e) {
-      final exceptionMessage =
-          (e is MyCustomException) ? e.message : AppConstants.error;
+      final exceptionMessage = (e is MyCustomException)
+          ? loginErrorMessage(e.message, code: e.code)
+          : AppConstants.error;
       showErrorDialog(exceptionMessage);
     } finally {
       hideLoadingOverlay();
