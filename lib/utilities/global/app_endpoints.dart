@@ -10,6 +10,7 @@ class AppEndpoints {
   static String get veifyOtp => '${baseUrl}auth/verify-otp';
   static String get locations => '${baseUrl}map';
   static String get faqs => '${baseUrl}faqs';
+  static String get aboutUs => '${baseUrl}about-us';
   static String get user => '${baseUrl}users/me';
   static String get events => '${baseUrl}events';
   static String get activities => '${baseUrl}activities';
