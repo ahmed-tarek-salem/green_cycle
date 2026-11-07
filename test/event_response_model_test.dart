@@ -16,4 +16,11 @@ void main() {
     final event = Event.fromMap({'_id': 'e2', 'name': 'x'});
     expect(event.date, isNull);
   });
+
+  test('reads the optional event photo', () {
+    expect(Event.fromMap({'_id': 'e3', 'image': 'https://x/e.png'}).image,
+        'https://x/e.png');
+    expect(Event.fromMap({'_id': 'e4', 'image': '  '}).image, isNull);
+    expect(Event.fromMap({'_id': 'e5'}).image, isNull);
+  });
 }

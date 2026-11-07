@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/models/response_models/event_response_model.dart';
+import 'package:green_cycle/shared_widgets/custom_cached_network_image.dart';
 import 'package:green_cycle/theme/app_colors.dart';
 import 'package:green_cycle/utilities/global/app_constants.dart';
 import 'package:intl/intl.dart';
@@ -29,6 +30,18 @@ class EventTile extends StatelessWidget {
         ),
         child: Column(
           children: [
+            if (event.image != null) ...[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+                child: CustomCachedNetworkImage(
+                  height: 160.h,
+                  width: double.infinity,
+                  imageUrl: event.image,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(height: 20.h),
+            ],
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
