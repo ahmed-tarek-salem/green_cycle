@@ -1,6 +1,9 @@
 import 'package:green_cycle/models/response_models/rewards_catalog_response_model.dart';
 import 'package:green_cycle/modules/rewards/rewards_texts.dart';
 
+/// Longest note or link the server accepts with an activity.
+const int activityNotesMaxLength = 500;
+
 /// Points the server will propose for this submission. Shown as a preview
 /// only. The server computes the real amount the same way.
 int submissionPoints(RewardAction action, {String? variantKey, int units = 1}) {
@@ -88,6 +91,12 @@ String submitErrorMessage(
     case 'UPLOAD_FAILED':
       return 'تعذّر رفع الصورة. حاول مرة أخرى.';
     case 'VALIDATION_ERROR':
+      if (serverMessage.contains('details cannot exceed')) {
+        return 'الوصف طويل. الحد الأقصى $activityNotesMaxLength حرف.';
+      }
+      if (serverMessage.contains('at least one image')) {
+        return 'أضف صورة أو وصفاً أو رابطاً للنشاط.';
+      }
       return 'تأكد من البيانات وحاول مرة أخرى.';
   }
   return serverMessage;

@@ -17,6 +17,9 @@ class PrimaryTextField extends StatelessWidget {
   final VoidCallback? onTap;
   final String? Function(String?)? validator;
   final int maxLines;
+
+  /// Shows a character counter and stops typing at this length.
+  final int? maxLength;
   final bool autoFocus;
   final Color? hintColor;
   final Color? activeTextAndBorderColor;
@@ -33,6 +36,7 @@ class PrimaryTextField extends StatelessWidget {
     this.onTap,
     this.validator,
     this.maxLines = 1,
+    this.maxLength,
     this.hintColor,
     this.activeTextAndBorderColor,
     super.key,
@@ -50,6 +54,7 @@ class PrimaryTextField extends StatelessWidget {
       onTap: onTap,
       validator: validator,
       maxLines: maxLines,
+      maxLength: maxLength,
       style: Get.textTheme.bodyMedium,
       decoration: InputDecoration(
         // errorMaxLines: 2,

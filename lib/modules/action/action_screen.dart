@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:green_cycle/models/response_models/rewards_catalog_response_model.dart';
 import 'package:green_cycle/modules/action/action_controller.dart';
+import 'package:green_cycle/modules/action/activity_submission.dart';
 import 'package:green_cycle/modules/action/widgets/activity_form_fields.dart';
 import 'package:green_cycle/modules/action/widgets/activity_picker_list.dart';
 import 'package:green_cycle/modules/home_layout/widgets/home_app_bar.dart';
@@ -108,6 +109,7 @@ class ActionScreen extends GetView<ActionController> {
           PrimaryTextField(
             hintText: 'أضف وصفاً أو رابط المنشور',
             maxLines: 2,
+            maxLength: activityNotesMaxLength,
             controller: controller.actionDetailsController,
           ),
           SizedBox(height: 30.h),
